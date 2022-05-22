@@ -1,16 +1,19 @@
 <template>
  <div>
+ <NavBar/>
+ <div class="body">
+ <br>
    <div class="container-xl">
 	<div class="table-responsive">
 		<div class="table-wrapper">
 			<div class="table-title">
 				<div class="row">
 					<div class="col-sm-6">
-						<h2>Manage <b>Employees</b></h2>
+						<h2>Manage <b> Garages</b></h2>
 					</div>
 					<div class="col-sm-6">
-						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
-						<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
+						<a href="#addEmployeeModal" class="btn mt-2" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
+						<a href="#deleteEmployeeModal" class="btn mt-2" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
 					</div>
 				</div>
 			</div>
@@ -134,13 +137,13 @@
 		<div class="modal-content">
 			<form>
 				<div class="modal-header">						
-					<h4 class="modal-title">Add Employee</h4>
+					<h4 class="text-whitesmoke">Add Garage</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
-				<div class="modal-body">					
+				<div class="container-content">					
 					<div class="form-group">
-						<label>Name</label>
-						<input type="text" class="form-control" required>
+						<label>Location</label>
+						<input placeholder="Location" type="text" class="form-style" required>
 					</div>
 					<div class="form-group">
 						<label>Email</label>
@@ -220,13 +223,18 @@
 	</div>
 </div>
  </div>
+ </div>
 </template>
 
 <script>
+import NavBar from '@/components/NavBar.vue'
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  components: {
+    NavBar
   }
   
 }
@@ -234,11 +242,13 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-body {
+.body {
 	color: #566787;
-	background: #f5f5f5;
+	background: #222D32;
 	font-family: 'Varela Round', sans-serif;
 	font-size: 13px;
+	height: 100vh;
+	margin: 0
 }
 .table-responsive {
     margin: 30px 0;
@@ -252,7 +262,7 @@ body {
 }
 .table-title {        
 	padding-bottom: 15px;
-	background: #435d7d;
+	background: #1A2226;
 	color: #fff;
 	padding: 16px 30px;
 	min-width: 100%;
@@ -431,6 +441,7 @@ table.table .avatar {
 }
 .modal .modal-header, .modal .modal-body, .modal .modal-footer {
 	padding: 20px 30px;
+	background-color:  #3a3a3aa2;
 }
 .modal .modal-content {
 	border-radius: 3px;
@@ -458,4 +469,40 @@ table.table .avatar {
 .modal form label {
 	font-weight: normal;
 }	
+.form-style {
+  padding: 13px 20px;
+  padding-left: 55px;
+  height: 48px;
+  width: 100%;
+  font-weight: 500;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.5px;
+  outline: none;
+  color: #c4c3ca;
+  background-color: #1f2029;
+  border: none;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+  box-shadow: 0 4px 8px 0 rgba(21,21,21,.2);
+}
+.form-style:focus,
+.form-style:active {
+  border: none;
+  outline: none;
+  box-shadow: 0 4px 8px 0 rgba(21,21,21,.2);
+}
+.container-content {
+    background-color: #3a3a3aa2;
+    color: inherit;
+    padding: 15px 20px 20px 20px;
+    border-color: #FFEB3B;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 0;
+}
+.text-whitesmoke {
+    color: whitesmoke
+}
 </style>
