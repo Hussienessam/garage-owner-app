@@ -1,32 +1,6 @@
 <template>
   <div>
     <div><NavBar /></div>
-    <!-- <v-card>
-    <v-toolbar
-      flat
-      color="blue-grey"
-      dark
-    >
-      <v-toolbar-title>Submit a post</v-toolbar-title>
-    </v-toolbar>
-
-    <v-card-text>
-      <v-text-field
-        filled
-        label="Title"
-        value="My new post"
-      ></v-text-field>
-
-      <v-textarea
-        filled
-        label="Text"
-        value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse"
-      ></v-textarea>
-
-    </v-card-text>
-
-    <v-divider></v-divider>
-  </v-card> -->
     <div class="body">
       <br />
       <div class="container-xl">
@@ -38,111 +12,133 @@
                   <h2>Manage <b> Garages</b></h2>
                 </div>
                 <div class="col-sm-6">
-                  <a
-                    href="#addEmployeeModal"
-                    class="btn mt-2"
-                    data-toggle="modal"
-                    ><i class="material-icons">&#xE147;</i>
-                    <span>Add New Garage</span></a
-                  >
+                  <a href="#addEmployeeModal" class="btn mt-2" data-toggle="modal">
+                    <i class="material-icons">&#xE147;</i>
+                    <span>Add New Garage</span>
+                  </a>
                 </div>
               </div>
             </div>
             <table class="table table-striped table-hover">
-			<h3>Garage no.1</h3>
-              <v-card>
-                <v-card-text>
-					<thead>
-						<tr>
-							<th>Address :</th>
-							<th> Dokki </th>
-						</tr>
-						<tr>
-							<th>Longtitiude :</th>
-							<th> 259.21.69 </th>
-						</tr>
-						<tr>
-							<th>Latitiude :</th>
-							<th> 12.398.024 </th>
-						</tr>
-						<tr>
-							<th>Num. of Cameras :</th>
-							<th> 8 </th>
-						</tr>
-							<th>Capacity :</th>
-							<th> 200 </th>
+              <h3>Garage no.1</h3>
+              <v-container class="grey lighten-5 text-center">
+                <v-row no-gutters>
+                  <template v-for="n in 2">
+                    <v-col :key="n" v-if="n === 1">
+                      <v-card>
+                        <v-card-text>
+                          <p><b>Garage Info </b></p>
+                          <v-simple-table>
+                            <template v-slot:default>
+                              <thead>
+                                <tr>
+                                  <th>Address :</th>
+                                  <th>Dokki</th>
+                                </tr>
+                                <tr>
+                                  <th>Longtitiude :</th>
+                                  <th>259.21.69</th>
+                                </tr>
+                                <tr>
+                                  <th>Latitiude :</th>
+                                  <th>12.398.024</th>
+                                </tr>
+                                <tr>
+                                  <th>Num. of Cameras :</th>
+                                  <th>8</th>
+                                </tr>
+                                <tr>
+                                  <th>Capacity :</th>
+                                  <th>200</th>
+                                </tr>
+                              </thead>
+                            </template>
+                          </v-simple-table>
+                        </v-card-text>
+                        <a href="#editEmployeeModal" class="edit" data-toggle="modal">
+                          <v-btn text color="teal accent-4" @click="reveal = true">
+                            <v-icon left>
+                              {{ icons.mdiPencil }}
+                            </v-icon>
+                            Edit Garage
+                          </v-btn>
+                        </a>
+                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
+                          <v-btn text color="teal accent-4" @click="reveal = true">
+                            <v-icon left>
+                              {{ icons.mdiDelete }}
+                            </v-icon>
+                            Delete Garage
+                          </v-btn>
+                        </a>
+                        <v-spacer></v-spacer>
+                      </v-card>
+                    </v-col>
 
-					</thead>
-					<!-- <p><b> Location : </b></p>
-					<label class="inline-block"> Dokki </label>
-					<p><b> Num. of Cameras :  </b></p>
-					<p><b> Capacity :  </b></p>
-					<p><b> Actions :  </b></p> -->
-                </v-card-text>
-
-				<v-card-actions class="right-centered">
-					<a href="#editEmployeeModal" class="edit" data-toggle="modal">
-						<!-- <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>Edit Garage -->
-						<v-btn text color="teal accent-4" @click="reveal = true">
-							<v-icon left>
-								{{ icons.mdiPencil }}
-							</v-icon>
-							Edit Garage
-						</v-btn>
-					</a>
-                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
-						<!-- <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>Delete Garage -->
-						<v-btn text color="teal accent-4" @click="reveal = true">
-							<v-icon left>
-								{{ icons.mdiDelete }}
-							</v-icon>
-							Delete Garage
-						</v-btn>
-					</a>
-				
-				</v-card-actions>
-
-                <v-divider></v-divider>
-              </v-card>
-              <!-- <thead>
-                <tr>
-                  <th>Location</th>
-                  <th>Num. of Cameras</th>
-                  <th>Capacity</th>
-                  <th>Actions</th>
-                </tr>
-              </thead> -->
-              <!-- <tbody>
-                <tr>
-                  <td>Thomas Hardy</td>
-                  <td>thomashardy@mail.com</td>
-                  <td>89 Chiaroscuro Rd, Portland, USA</td>
-                  <td>
-                    <a
-                      href="#editEmployeeModal"
-                      class="edit"
-                      data-toggle="modal"
-                      ><i
-                        class="material-icons"
-                        data-toggle="tooltip"
-                        title="Edit"
-                        >&#xE254;</i
-                      ></a
-                    >
-                    <a
-                      href="#deleteEmployeeModal"
-                      class="delete"
-                      data-toggle="modal"
-                      ><i
-                        class="material-icons"
-                        data-toggle="tooltip"
-                        title="Delete"
-                        >&#xE872;</i
-                      ></a
-                    >
-                  </td>
-                </tr>
-              </tbody> -->
+                    <v-col :key="n" v-if="n === 2">
+                      <v-card>
+                        <v-card-text>
+                          <p><b>Cameras </b></p>
+                          <v-simple-table>
+                            <template v-slot:default>
+                              <thead>
+                                <tr>
+                                  <th>Location</th>
+                                  <th>Delete</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>2FB</td>
+                                  <td>
+                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
+                                      <v-btn text color="teal accent-4" @click="reveal = true">
+                                        <v-icon left>
+                                          {{ icons.mdiDelete }}
+                                        </v-icon>
+                                      </v-btn>
+                                    </a>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>3CD</td>
+                                  <td>
+                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
+                                      <v-btn text color="teal accent-4" @click="reveal = true">
+                                        <v-icon left>
+                                          {{ icons.mdiDelete }}
+                                        </v-icon>
+                                      </v-btn>
+                                    </a>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </template>
+                          </v-simple-table>
+                        </v-card-text>
+                        <a href="#editEmployeeModal" class="edit" data-toggle="modal">
+                          <v-btn text color="teal accent-4" @click="reveal = true">
+                            <v-icon>
+                              {{ icons.mdiPlusBox }}
+                            </v-icon>
+                            Add Camera
+                          </v-btn>
+                        </a>
+                        <v-divider></v-divider>
+                      </v-card>
+                    </v-col>
+                  </template>
+                </v-row>
+				<br><br>
+                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
+                  <v-btn text color="teal accent-4" @click="reveal = true">
+                    <v-icon left>
+                      {{ icons.mdiEye }}
+                    </v-icon>
+                    Show Garage Reviews
+                  </v-btn>
+                </a>
+              </v-container>
             </table>
           </div>
         </div>
@@ -154,18 +150,13 @@
             <form>
               <div class="modal-header">
                 <h4 class="text-whitesmoke">Add Garage</h4>
-                <button
-                  type="button"
-                  class="close"
-                  data-dismiss="modal"
-                  aria-hidden="true"
-                >
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                   &times;
                 </button>
               </div>
               <br />
               <div class="container-content">
-				<div class="form-group">
+                <div class="form-group">
                   <label>Address</label>
                   <input type="text" class="form-control" required />
                 </div>
@@ -187,12 +178,7 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <input
-                  type="button"
-                  class="btn btn-default"
-                  data-dismiss="modal"
-                  value="Cancel"
-                />
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel"/>
                 <input type="submit" class="btn mt-2" value="Add" />
               </div>
             </form>
@@ -206,18 +192,13 @@
             <form>
               <div class="modal-header">
                 <h4 class="text-whitesmoke">Edit Garage</h4>
-                <button
-                  type="button"
-                  class="close"
-                  data-dismiss="modal"
-                  aria-hidden="true"
-                >
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                   &times;
                 </button>
               </div>
               <br />
               <div class="container-content">
-				<div class="form-group">
+                <div class="form-group">
                   <label>Address</label>
                   <input type="text" class="form-control" required />
                 </div>
@@ -239,12 +220,7 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <input
-                  type="button"
-                  class="btn btn-default"
-                  data-dismiss="modal"
-                  value="Cancel"
-                />
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel"/>
                 <input type="submit" class="btn btn-2" value="Save" />
               </div>
             </form>
@@ -258,12 +234,7 @@
             <form>
               <div class="modal-header">
                 <h4 class="text-whitesmoke">Delete Garage</h4>
-                <button
-                  type="button"
-                  class="close"
-                  data-dismiss="modal"
-                  aria-hidden="true"
-                >
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                   &times;
                 </button>
               </div>
@@ -295,10 +266,7 @@
 
 <script>
 import NavBar from "@/components/NavBar.vue";
-import {
-    mdiPencil,
-    mdiDelete,
-  } from '@mdi/js'
+import { mdiPencil, mdiDelete, mdiPlusBox, mdiEye } from "@mdi/js";
 
 export default {
   name: "HelloWorld",
@@ -306,11 +274,13 @@ export default {
     NavBar,
   },
   data: () => ({
-      icons: {
-        mdiPencil,
-        mdiDelete,
-      },
-    }),
+    icons: {
+      mdiPencil,
+      mdiDelete,
+      mdiPlusBox,
+      mdiEye,
+    },
+  }),
 };
 </script>
 
@@ -325,9 +295,9 @@ export default {
   margin: 0;
   padding: 0;
 }
-/* .table-responsive {
+.table-responsive {
     margin: 30px 0;
-} */
+}
 .table-wrapper {
   background: #fff;
   padding: 20px 25px;
@@ -376,13 +346,14 @@ table.table tr td {
   border-color: #e9e9e9;
   padding: 12px 15px;
   vertical-align: middle;
+  text-align: center;
 }
-/* table.table tr th:first-child {
+table.table tr th:first-child {
 	width: 100px;
 }
 table.table tr th:last-child {
 	width: 100px;
-} */
+}
 table.table-striped tbody tr:nth-of-type(odd) {
   background-color: #fcfcfc;
 }
@@ -423,95 +394,6 @@ table.table .avatar {
   vertical-align: middle;
   margin-right: 10px;
 }
-.pagination {
-  float: right;
-  margin: 0 0 5px;
-}
-.pagination li a {
-  border: none;
-  font-size: 13px;
-  min-width: 30px;
-  min-height: 30px;
-  color: #999;
-  margin: 0 2px;
-  line-height: 30px;
-  border-radius: 2px !important;
-  text-align: center;
-  padding: 0 6px;
-}
-.pagination li a:hover {
-  color: #666;
-}
-.pagination li.active a,
-.pagination li.active a.page-link {
-  background: #03a9f4;
-}
-.pagination li.active a:hover {
-  background: #0397d6;
-}
-.pagination li.disabled i {
-  color: #ccc;
-}
-.pagination li i {
-  font-size: 16px;
-  padding-top: 6px;
-}
-.hint-text {
-  float: left;
-  margin-top: 10px;
-  font-size: 13px;
-}
-/* Custom checkbox */
-/* .custom-checkbox {
-	position: relative;
-}
-.custom-checkbox input[type="checkbox"] {    
-	opacity: 0;
-	position: absolute;
-	margin: 5px 0 0 3px;
-	z-index: 9;
-}
-.custom-checkbox label:before{
-	width: 18px;
-	height: 18px;
-}
-.custom-checkbox label:before {
-	content: '';
-	margin-right: 10px;
-	display: inline-block;
-	vertical-align: text-top;
-	background: white;
-	border: 1px solid #bbb;
-	border-radius: 2px;
-	box-sizing: border-box;
-	z-index: 2;
-}
-.custom-checkbox input[type="checkbox"]:checked + label:after {
-	content: '';
-	position: absolute;
-	left: 6px;
-	top: 3px;
-	width: 6px;
-	height: 11px;
-	border: solid #000;
-	border-width: 0 3px 3px 0;
-	transform: inherit;
-	z-index: 3;
-	transform: rotateZ(45deg);
-}
-.custom-checkbox input[type="checkbox"]:checked + label:before {
-	border-color: #03A9F4;
-	background: #03A9F4;
-}
-.custom-checkbox input[type="checkbox"]:checked + label:after {
-	border-color: #fff;
-}
-.custom-checkbox input[type="checkbox"]:disabled + label:before {
-	color: #b8b8b8;
-	cursor: auto;
-	box-shadow: none;
-	background: #ddd;
-} */
 /* Modal styles */
 .modal .modal-dialog {
   max-width: 400px;
