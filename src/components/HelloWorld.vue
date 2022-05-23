@@ -1,6 +1,6 @@
 <template>
  <div>
- <NavBar/>
+ <div> <NavBar/> </div>
  <div class="body">
  <br>
    <div class="container-xl">
@@ -12,126 +12,47 @@
 						<h2>Manage <b> Garages</b></h2>
 					</div>
 					<div class="col-sm-6">
-						<a href="#addEmployeeModal" class="btn mt-2" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
-						<a href="#deleteEmployeeModal" class="btn mt-2" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
+						<a href="#addEmployeeModal" class="btn mt-2" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Garage</span></a>
 					</div>
 				</div>
 			</div>
 			<table class="table table-striped table-hover">
 				<thead>
 					<tr>
-						<th>
+						<!-- <th>
 							<span class="custom-checkbox">
 								<input type="checkbox" id="selectAll">
 								<label for="selectAll"></label>
 							</span>
-						</th>
-						<th>Name</th>
-						<th>Email</th>
-						<th>Address</th>
-						<th>Phone</th>
+						</th> -->
+						<th>Location</th>
+						<th>Num. of Cameras</th>
+						<th>Capacity</th>
 						<th>Actions</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td>
+						<!-- <td>
 							<span class="custom-checkbox">
 								<input type="checkbox" id="checkbox1" name="options[]" value="1">
 								<label for="checkbox1"></label>
 							</span>
-						</td>
+						</td> -->
 						<td>Thomas Hardy</td>
 						<td>thomashardy@mail.com</td>
 						<td>89 Chiaroscuro Rd, Portland, USA</td>
-						<td>(171) 555-2222</td>
 						<td>
 							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
 							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 						</td>
-					</tr>
-					<tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox2" name="options[]" value="1">
-								<label for="checkbox2"></label>
-							</span>
-						</td>
-						<td>Dominique Perrier</td>
-						<td>dominiqueperrier@mail.com</td>
-						<td>Obere Str. 57, Berlin, Germany</td>
-						<td>(313) 555-5735</td>
-						<td>
-							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox3" name="options[]" value="1">
-								<label for="checkbox3"></label>
-							</span>
-						</td>
-						<td>Maria Anders</td>
-						<td>mariaanders@mail.com</td>
-						<td>25, rue Lauriston, Paris, France</td>
-						<td>(503) 555-9931</td>
-						<td>
-							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox4" name="options[]" value="1">
-								<label for="checkbox4"></label>
-							</span>
-						</td>
-						<td>Fran Wilson</td>
-						<td>franwilson@mail.com</td>
-						<td>C/ Araquil, 67, Madrid, Spain</td>
-						<td>(204) 619-5731</td>
-						<td>
-							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-						</td>
-					</tr>					
-					<tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox5" name="options[]" value="1">
-								<label for="checkbox5"></label>
-							</span>
-						</td>
-						<td>Martin Blank</td>
-						<td>martinblank@mail.com</td>
-						<td>Via Monte Bianco 34, Turin, Italy</td>
-						<td>(480) 631-2097</td>
-						<td>
-							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-						</td>
-					</tr> 
+					</tr>			
 				</tbody>
 			</table>
-			<div class="clearfix">
-				<div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-				<ul class="pagination">
-					<li class="page-item disabled"><a href="#">Previous</a></li>
-					<li class="page-item"><a href="#" class="page-link">1</a></li>
-					<li class="page-item"><a href="#" class="page-link">2</a></li>
-					<li class="page-item active"><a href="#" class="page-link">3</a></li>
-					<li class="page-item"><a href="#" class="page-link">4</a></li>
-					<li class="page-item"><a href="#" class="page-link">5</a></li>
-					<li class="page-item"><a href="#" class="page-link">Next</a></li>
-				</ul>
-			</div>
 		</div>
 	</div>        
 </div>
-<!-- Edit Modal HTML -->
+<!-- Add Modal HTML -->
 <div id="addEmployeeModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -140,27 +61,28 @@
 					<h4 class="text-whitesmoke">Add Garage</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
+				<br>
 				<div class="container-content">					
 					<div class="form-group">
-						<label>Location</label>
-						<input placeholder="Location" type="text" class="form-style" required>
+						<label>Location / Longtitude</label>
+						<input type="text" class="form-control" required>
 					</div>
 					<div class="form-group">
-						<label>Email</label>
+						<label>Location / Latitude</label>
+						<input type="text" class="form-control" required>
+					</div>
+					<div class="form-group">
+						<label>Num. of Cameras</label>
 						<input type="email" class="form-control" required>
 					</div>
 					<div class="form-group">
-						<label>Address</label>
-						<textarea class="form-control" required></textarea>
-					</div>
-					<div class="form-group">
-						<label>Phone</label>
-						<input type="text" class="form-control" required>
+						<label>Capacity</label>
+						<input class="form-control" required>
 					</div>					
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-success" value="Add">
+					<input type="submit" class="btn mt-2" value="Add">
 				</div>
 			</form>
 		</div>
@@ -172,30 +94,31 @@
 		<div class="modal-content">
 			<form>
 				<div class="modal-header">						
-					<h4 class="modal-title">Edit Employee</h4>
+					<h4 class="text-whitesmoke">Edit Garage</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
-				<div class="modal-body">					
+				<br>
+				<div class="container-content">					
 					<div class="form-group">
-						<label>Name</label>
+						<label>Location / Longtitude</label>
 						<input type="text" class="form-control" required>
 					</div>
 					<div class="form-group">
-						<label>Email</label>
+						<label>Location / Latitude</label>
+						<input type="text" class="form-control" required>
+					</div>
+					<div class="form-group">
+						<label>Num. of Cameras</label>
 						<input type="email" class="form-control" required>
 					</div>
 					<div class="form-group">
-						<label>Address</label>
-						<textarea class="form-control" required></textarea>
-					</div>
-					<div class="form-group">
-						<label>Phone</label>
-						<input type="text" class="form-control" required>
+						<label>Capacity</label>
+						<input class="form-control" required>
 					</div>					
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-info" value="Save">
+					<input type="submit" class="btn btn-2" value="Save">
 				</div>
 			</form>
 		</div>
@@ -207,22 +130,23 @@
 		<div class="modal-content">
 			<form>
 				<div class="modal-header">						
-					<h4 class="modal-title">Delete Employee</h4>
+					<h4 class="text-whitesmoke">Delete Garage</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
-				<div class="modal-body">					
-					<p>Are you sure you want to delete these Records?</p>
-					<p class="text-warning"><small>This action cannot be undone.</small></p>
+				<br><br>
+				<div class="container-content">					
+					<p>Are you sure you want to delete this Garage from the system?</p>
+					<p class="text-danger"><small>This action cannot be undone.</small></p>
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-danger" value="Delete">
+					<input type="submit" class="btn btn-2" value="Delete">
 				</div>
 			</form>
 		</div>
 	</div>
 </div>
- </div>
+</div>
  </div>
 </template>
 
@@ -230,9 +154,6 @@
 import NavBar from '@/components/NavBar.vue'
 export default {
   name: 'HelloWorld',
-  props: {
-    msg: String
-  },
   components: {
     NavBar
   }
@@ -248,11 +169,12 @@ export default {
 	font-family: 'Varela Round', sans-serif;
 	font-size: 13px;
 	height: 100vh;
-	margin: 0
+	margin: 0;
+	padding: 0;
 }
-.table-responsive {
+/* .table-responsive {
     margin: 30px 0;
-}
+} */
 .table-wrapper {
 	background: #fff;
 	padding: 20px 25px;
@@ -301,12 +223,12 @@ table.table tr th, table.table tr td {
 	padding: 12px 15px;
 	vertical-align: middle;
 }
-table.table tr th:first-child {
-	width: 60px;
+/* table.table tr th:first-child {
+	width: 100px;
 }
 table.table tr th:last-child {
 	width: 100px;
-}
+} */
 table.table-striped tbody tr:nth-of-type(odd) {
 	background-color: #fcfcfc;
 }
@@ -385,7 +307,7 @@ table.table .avatar {
 	font-size: 13px;
 }    
 /* Custom checkbox */
-.custom-checkbox {
+/* .custom-checkbox {
 	position: relative;
 }
 .custom-checkbox input[type="checkbox"] {    
@@ -434,14 +356,14 @@ table.table .avatar {
 	cursor: auto;
 	box-shadow: none;
 	background: #ddd;
-}
+} */
 /* Modal styles */
 .modal .modal-dialog {
 	max-width: 400px;
 }
 .modal .modal-header, .modal .modal-body, .modal .modal-footer {
 	padding: 20px 30px;
-	background-color:  #3a3a3aa2;
+	background-color:  #1A2226;
 }
 .modal .modal-content {
 	border-radius: 3px;
@@ -458,6 +380,7 @@ table.table .avatar {
 	border-radius: 2px;
 	box-shadow: none;
 	border-color: #dddddd;
+	font-size: 14px;
 }
 .modal textarea.form-control {
 	resize: vertical;
@@ -469,39 +392,6 @@ table.table .avatar {
 .modal form label {
 	font-weight: normal;
 }	
-.form-style {
-  padding: 13px 20px;
-  padding-left: 55px;
-  height: 48px;
-  width: 100%;
-  font-weight: 500;
-  border-radius: 4px;
-  font-size: 14px;
-  line-height: 22px;
-  letter-spacing: 0.5px;
-  outline: none;
-  color: #c4c3ca;
-  background-color: #1f2029;
-  border: none;
-  -webkit-transition: all 200ms linear;
-  transition: all 200ms linear;
-  box-shadow: 0 4px 8px 0 rgba(21,21,21,.2);
-}
-.form-style:focus,
-.form-style:active {
-  border: none;
-  outline: none;
-  box-shadow: 0 4px 8px 0 rgba(21,21,21,.2);
-}
-.container-content {
-    background-color: #3a3a3aa2;
-    color: inherit;
-    padding: 15px 20px 20px 20px;
-    border-color: #FFEB3B;
-    border-image: none;
-    border-style: solid solid none;
-    border-width: 1px 0;
-}
 .text-whitesmoke {
     color: whitesmoke
 }
