@@ -6,10 +6,14 @@
 
 <script>
 import Home from './components/Home.vue'
+import Login from './components/Login.vue'
+import Signup from './components/Signup.vue'
 export default {
   name: 'App',
   components: {
-    Home
+    Home,
+    Login,
+    Signup
   }
 }
 </script>
