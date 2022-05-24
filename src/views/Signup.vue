@@ -26,7 +26,7 @@
 </template>
 <script>
   export default {
-    
+      name: "Signup"
   }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -1,4 +1,3 @@
-
 <template>
   <v-toolbar>
   <img class="mr-5" :src="require('@/assets/logo.png')" height="110"/>

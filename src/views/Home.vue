@@ -350,7 +350,7 @@ import Review from "@/components/Review.vue";
 import { mdiPencil, mdiDelete, mdiPlusBox, mdiEye } from "@mdi/js";
 
 export default {
-  name: "HelloWorld",
+  name: "Home",
   components: {
     NavBar,
 	Review

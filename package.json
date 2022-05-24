@@ -9,15 +9,18 @@
   },
   "dependencies": {
     "@mdi/js": "^6.7.96",
+    "@vue/compiler-sfc": "^3.2.36",
     "bootstrap": "^4.5.0",
     "core-js": "^3.6.5",
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
     "vue": "^2.6.11",
+    "vue-router": "^4.0.15",
     "vuetify": "^2.6.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.13",
+    "@vue/cli-plugin-router": "~5.0.0",
     "@vue/cli-service": "~4.5.13",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",

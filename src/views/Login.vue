@@ -25,7 +25,7 @@
                 </div>
                 <button type="submit" id="submit">LOG IN</button>
                 <label id="register">Not Registered?<span>
-                    <a href="/" id="create-account"> Create an account!</a></span></label>
+                    <router-link to="/Signup">Create an account!</router-link></span></label>
             </form>
 	    </div>
        </div>
@@ -34,8 +34,8 @@
 <script>
   import NavBar from "@/components/NavBar.vue";
   export default {
-    components: {
-    NavBar}
+    name: "Login",
+    components: {NavBar}
   }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
