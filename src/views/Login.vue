@@ -25,7 +25,7 @@
                 </div>
                 <button type="submit" id="submit">LOG IN</button>
                 <label id="register">Not Registered?<span>
-                    <router-link to="/Signup">Create an account!</router-link></span></label>
+                    <router-link to="/Signup" id="create-account"> Create an account!</router-link></span></label>
             </form>
 	    </div>
        </div>
