@@ -8,12 +8,12 @@
             <form action="">
                 <div class="input-group">
                     <label for="email" class="label">E-MAIL</label>
-                    <input type="name" class="input" name="email">
+                    <input type="name" class="input" name="email" v-model="email">
                 </div>
 
                 <div class="input-group">
                     <label for="password" class="label">PASSWORD</label>
-                    <input type="password" class="input pass" name="password">
+                    <input type="password" class="input pass" name="password" v-model="password">
                 </div>
                 <div class="flex margin">
                     <span id="remember-me-group">
@@ -22,7 +22,7 @@
                     </span>
                     <a href="/" id="forget-password">Forget Password?</a>
                 </div>
-                <v-btn @click="Login" id="submit" type="submit">LOG IN</v-btn>
+                <v-btn @click="Login" id="submit">LOG IN</v-btn>
                 <label id="register">Not Registered?<span>
                     <router-link to="/Signup" id="create-account"> Create an account!</router-link></span></label>
             </form>
@@ -32,14 +32,32 @@
 </template>
 <script>
   import NavBar from "@/components/NavBar.vue";
+  import axios from "axios";
   export default {
     name: "Login",
     components: {NavBar},
+    data () {
+      return {
+      email:"",
+      password:""
+    }
+  },
     methods: {
     Login() {
-      this.$router.push({ name: "Home" });
-    }
-    }
+        axios({
+        method: "get",
+        url: "http://164.92.174.146/log_in",
+        data: {
+            email: this.email,
+            password: this.password,
+          },
+      }).then((response) => {
+          
+          console.log(response);
+        // this.$router.push({ name: "Home" });
+      });
+     }
+   }
   }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
