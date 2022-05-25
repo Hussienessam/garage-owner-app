@@ -10,6 +10,6 @@ module.exports = {
     }
   },
   devServer: {
-    proxy: 'http://164.92.174.146/',
+    headers: { "Access-Control-Allow-Origin": "*" }
   }
 }

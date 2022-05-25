@@ -22,6 +22,9 @@
                     </span>
                     <a href="/" id="forget-password">Forget Password?</a>
                 </div>
+                <v-alert v-if="show" dismissible dense outlined>
+                    Invalid email or password
+                </v-alert>
                 <v-btn @click="Login" id="submit">LOG IN</v-btn>
                 <label id="register">Not Registered?<span>
                     <router-link to="/Signup" id="create-account"> Create an account!</router-link></span></label>
@@ -39,7 +42,8 @@
     data () {
       return {
       email:"",
-      password:""
+      password:"",
+      show: false
     }
   },
     methods: {
@@ -47,14 +51,16 @@
         axios({
         method: "get",
         url: "http://164.92.174.146/log_in",
-        data: {
+        params: {
             email: this.email,
             password: this.password,
           },
       }).then((response) => {
-          
           console.log(response);
-        // this.$router.push({ name: "Home" });
+          this.$router.push({ name: "Home" });
+      })
+       .catch((err) => {
+            this.show = true;
       });
      }
    }
