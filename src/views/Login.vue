@@ -1,15 +1,14 @@
 <template>
     <div class="body">
-        <div><NavBar /></div>
         <div id="main-container">
         <div id="container">
             <h1 id="title">LOGIN <span>
                 <img src="logo.png" alt="">
             </span></h1>
-            <form action="" autocomplete="off">
+            <form action="">
                 <div class="input-group">
                     <label for="email" class="label">E-MAIL</label>
-                    <input autocomplete="false" type="email" class="input" name="email">
+                    <input type="name" class="input" name="email">
                 </div>
 
                 <div class="input-group">
@@ -23,7 +22,7 @@
                     </span>
                     <a href="/" id="forget-password">Forget Password?</a>
                 </div>
-                <button type="submit" id="submit">LOG IN</button>
+                <v-btn @click="Login" id="submit" type="submit">LOG IN</v-btn>
                 <label id="register">Not Registered?<span>
                     <router-link to="/Signup" id="create-account"> Create an account!</router-link></span></label>
             </form>
@@ -35,7 +34,12 @@
   import NavBar from "@/components/NavBar.vue";
   export default {
     name: "Login",
-    components: {NavBar}
+    components: {NavBar},
+    methods: {
+    Login() {
+      this.$router.push({ name: "Home" });
+    }
+    }
   }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

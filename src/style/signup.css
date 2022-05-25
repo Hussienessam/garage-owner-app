@@ -34,7 +34,7 @@
   color: #222d32;
   margin-bottom: 30px;
   font-family: emoji;
-
+  display: flex;
 }
 
 form {

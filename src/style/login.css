@@ -8,13 +8,11 @@
   box-sizing: border-box;
 }
 
-html, body{
-  overflow-y: hidden!important;
+html{
+  overflow-y: hidden !important;
 }
-.body {
-  overflow-y: hidden; /* Hide vertical scrollbar */
-  overflow-x: hidden; /* Hide horizontal scrollbar */
-}
+
+
 #main-container {
   display: flex;
   justify-content: center;
@@ -92,6 +90,7 @@ input[type=password]:focus {
   font-size: 14px;
   margin: 5px 0 5px 0;
   letter-spacing: 1px;
+  text-align: left;
 }
 
 label {
