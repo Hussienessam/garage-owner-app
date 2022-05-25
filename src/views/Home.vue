@@ -12,10 +12,10 @@
                   <h2>Manage <b> Garages</b></h2>
                 </div>
                 <div class="col-sm-6">
-                  <a href="#addGarage" class="btn mt-2" data-toggle="modal">
+                  <button @click="addGarage()" class="btn mt-2">
                     <i class="material-icons">&#xE147;</i>
                     <span>Add New Garage</span>
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
@@ -27,50 +27,46 @@
                     <v-col :key="n" v-if="n === 1">
                       <v-card>
                         <v-card-text>
-                          <p><b>Garage Info </b></p>
+                          <h5><b>Garage Info </b></h5>
                           <v-simple-table>
                             <template v-slot:default>
                               <thead>
                                 <tr>
-                                  <th>Address :</th>
-                                  <th>Dokki</th>
+                                  <td>Address :</td>
+                                  <td>Dokki</td>
                                 </tr>
                                 <tr>
-                                  <th>Longtitiude :</th>
-                                  <th>259.21.69</th>
+                                  <td>Longtitiude :</td>
+                                  <td>259.21.69</td>
                                 </tr>
                                 <tr>
-                                  <th>Latitiude :</th>
-                                  <th>12.398.024</th>
+                                  <td>Latitiude :</td>
+                                  <td>12.398.024</td>
                                 </tr>
                                 <tr>
-                                  <th>Num. of Cameras :</th>
-                                  <th>8</th>
+                                  <td>Num. of Cameras :</td>
+                                  <td>8</td>
                                 </tr>
                                 <tr>
-                                  <th>Capacity :</th>
-                                  <th>200</th>
+                                  <td>Capacity :</td>
+                                  <td>200</td>
                                 </tr>
                               </thead>
                             </template>
                           </v-simple-table>
                         </v-card-text>
-                        <a href="#editGarage" class="edit" data-toggle="modal">
-                          <v-btn text color="teal accent-4" @click="reveal = true">
+                          <v-btn text color="teal accent-4" @click="editGarage()">
                             <v-icon left>
-                              {{ icons.mdiPencil }}
+                              {{ editt }}
                             </v-icon>
                             Edit Garage
                           </v-btn>
-                        </a>
-                        <a href="#deleteGarage" class="delete" data-toggle="modal">
-                          <v-btn text color="teal accent-4" @click="reveal = true">
+                          <v-btn text color="teal accent-4" v-on:click="deleteGaragePopUp">
                             <v-icon left>
-                              {{ icons.mdiDelete }}
+                              {{ deletee }}
                             </v-icon>
                             Delete Garage
                           </v-btn>
-                        </a>
                         <v-spacer></v-spacer>
                       </v-card>
                     </v-col>
@@ -78,48 +74,39 @@
                     <v-col :key="n" v-if="n === 2">
                       <v-card>
                         <v-card-text>
-                          <p><b>Cameras </b></p>
+                          <h5><b>Cameras </b></h5>
                           <v-simple-table>
                             <template v-slot:default>
                               <thead>
                                 <tr>
-                                  <th>Location</th>
-                                  <th>Delete</th>
+                                  <td>Location</td>
+                                  <td></td>
                                 </tr>
                               </thead>
                               <tbody>
                                 <tr>
                                   <td>2FB</td>
                                   <td>
-                                    <a href="#deleteCamera" class="delete" data-toggle="modal">
-                                      <v-btn text color="teal accent-4" @click="reveal = true">
+                                      <v-btn text color="teal accent-3" v-on:click="deleteCameraPopUp">
                                         <v-icon left>
-                                          {{ icons.mdiDelete }}
+                                          {{ deletee }}
                                         </v-icon>
                                       </v-btn>
-                                    </a>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>3CD</td>
-                                  <td>
-                                    <a href="#deleteCamera" class="delete" data-toggle="modal">
-                                      <v-btn text color="teal accent-4" @click="reveal = true">
+                                      <v-btn text color="teal accent-3" @click="editCamera()">
                                         <v-icon left>
-                                          {{ icons.mdiDelete }}
+                                          {{ editt }}
                                         </v-icon>
                                       </v-btn>
-                                    </a>
                                   </td>
                                 </tr>
                               </tbody>
                             </template>
                           </v-simple-table>
                         </v-card-text>
-                        <a href="#addCamera" class="btn mt-2" data-toggle="modal">
-                          <v-btn text color="teal accent-4" @click="reveal = true">
+                        <a class="btn mt-2">
+                          <v-btn text color="teal accent-4" @click="addCamera()">
                             <v-icon>
-                              {{ icons.mdiPlusBox }}
+                              {{ pluss }}
                             </v-icon>
                             Add Camera
                           </v-btn>
@@ -130,239 +117,84 @@
                   </template>
                 </v-row>
 				<br><br>
-                <!-- <a href="#showReviews" data-toggle="modal">
-                  <v-btn text color="teal accent-4" @click="reveal = true">
-                    <v-icon left>
-                      {{ icons.mdiEye }}
-                    </v-icon>
-                    Show Garage Reviews
-                  </v-btn>
-                </a> -->
-				<v-expansion-panels>
-					<v-expansion-panel>
-					<v-expansion-panel-header>
-							<v-btn text color="teal accent-4" @click="reveal = true">
-								<v-icon left> {{ icons.mdiEye }} </v-icon>
+							<v-btn text color="teal accent-4" @click="showReviews()">
+								<v-icon left> {{ showw }} </v-icon>
 								Show Garage Reviews
 							</v-btn>
-					</v-expansion-panel-header>
-					<v-expansion-panel-content>
-						<Review/>
-					</v-expansion-panel-content>
-					</v-expansion-panel>
-				</v-expansion-panels>
               </v-container>
             </table>
           </div>
         </div>
       </div>
-      <!-- Add Garage -->
-      <div id="addGarage" class="modal fade">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <form>
-              <div class="modal-header">
-                <h4 class="text-whitesmoke">Add Garage</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                  &times;
-                </button>
-              </div>
-              <br />
-              <div class="container-content">
-                <div class="form-group">
-                  <label>Address</label>
-                  <input type="text" class="form-control" required />
-                </div>
-                <div class="form-group">
-                  <label>Longtitude</label>
-                  <input type="text" class="form-control" required />
-                </div>
-                <div class="form-group">
-                  <label>Latitude</label>
-                  <input type="text" class="form-control" required />
-                </div>
-                <div class="form-group">
-                  <label>Num. of Cameras</label>
-                  <input type="email" class="form-control" required />
-                </div>
-                <div class="form-group">
-                  <label>Capacity</label>
-                  <input class="form-control" required />
-                </div>
-              </div>
-              <div class="modal-footer">
-                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel"/>
-                <input type="submit" class="btn mt-2" value="Add" />
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-      <!-- Edit Garage -->
-      <div id="editGarage" class="modal fade">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <form>
-              <div class="modal-header">
-                <h4 class="text-whitesmoke">Edit Garage</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                  &times;
-                </button>
-              </div>
-              <br />
-              <div class="container-content">
-                <div class="form-group">
-                  <label>Address</label>
-                  <input type="text" class="form-control" required />
-                </div>
-                <div class="form-group">
-                  <label>Longtitude</label>
-                  <input type="text" class="form-control" required />
-                </div>
-                <div class="form-group">
-                  <label>Latitude</label>
-                  <input type="text" class="form-control" required />
-                </div>
-                <div class="form-group">
-                  <label>Num. of Cameras</label>
-                  <input type="email" class="form-control" required />
-                </div>
-                <div class="form-group">
-                  <label>Capacity</label>
-                  <input class="form-control" required />
-                </div>
-              </div>
-              <div class="modal-footer">
-                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel"/>
-                <input type="submit" class="btn btn-2" value="Save" />
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-      <!-- Delete Garage -->
-      <div id="deleteGarage" class="modal fade">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <form>
-              <div class="modal-header">
-                <h4 class="text-whitesmoke">Delete Garage</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                  &times;
-                </button>
-              </div>
-              <br /><br />
-              <div class="container-content">
-                <p>
-                  Are you sure you want to delete this Garage from the system?
-                </p>
-                <p class="text-danger">
-                  <small>This action cannot be undone.</small>
-                </p>
-              </div>
-              <div class="modal-footer">
-                <input
-                  type="button"
-                  class="btn btn-default"
-                  data-dismiss="modal"
-                  value="Cancel"
-                />
-                <input type="submit" class="btn btn-2" value="Delete" />
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
     </div>
-	<!-- Delete Camera -->
-      <div id="deleteCamera" class="modal fade">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <form>
-              <div class="modal-header">
-                <h4 class="text-whitesmoke">Delete Camera</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                  &times;
-                </button>
-              </div>
-              <br /><br />
-              <div class="container-content">
-                <p>
-                  Are you sure you want to delete this Camera from the system?
-                </p>
-                <p class="text-danger">
-                  <small>This action cannot be undone.</small>
-                </p>
-              </div>
-              <div class="modal-footer">
-                <input
-                  type="button"
-                  class="btn btn-default"
-                  data-dismiss="modal"
-                  value="Cancel"
-                />
-                <input type="submit" class="btn btn-2" value="Delete" />
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-	<!-- Add Camera -->
-      <div id="addCamera" class="modal fade">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <form>
-              <div class="modal-header">
-                <h4 class="text-whitesmoke">Add Camera</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                  &times;
-                </button>
-              </div>
-              <br />
-              <div class="container-content">
-                <div class="form-group">
-                  <label>Location</label>
-                  <input type="text" class="form-control" required />
-                </div>
-                <div class="form-group">
-                  <label>Longtitude</label>
-                  <input type="text" class="form-control" required />
-                </div>
-                <div class="form-group">
-                  <label>Latitude</label>
-                  <input type="text" class="form-control" required />
-                </div>
-              </div>
-              <div class="modal-footer">
-                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel"/>
-                <input type="submit" class="btn mt-2" value="Add" />
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
   </div>
 </template>
 
 <script>
 import NavBar from "@/components/NavBar.vue";
-import Review from "@/components/Review.vue";
 import { mdiPencil, mdiDelete, mdiPlusBox, mdiEye } from "@mdi/js";
 
 export default {
   name: "Home",
   components: {
     NavBar,
-	Review
   },
-  data: () => ({
-    icons: {
-      mdiPencil,
-      mdiDelete,
-      mdiPlusBox,
-      mdiEye,
+  data () {
+      return {
+      editt: mdiPencil,
+      deletee:mdiDelete,
+      pluss: mdiPlusBox,
+      showw: mdiEye,
+      deleteGarage: false,
+    }
+  },
+  methods: {
+    addGarage() {
+      this.$router.push({ name: "AddGarage" });
     },
-  }),
+    editGarage(){
+       this.$router.push({ name: "EditGarage" });
+    },
+    addCamera(){
+      this.$router.push({ name: "AddCamera" });
+    },
+    editCamera(){
+       this.$router.push({ name: "EditCamera" });
+    },
+    showReviews(){
+       this.$router.push({ name: "ShowReviews" });
+    },
+    deleteGaragePopUp(){  
+           this.$swal({  
+                  title: "Do you want to delete this Garage?",  
+                  text: "This action can't be undone",  
+                  type: "warning",  
+                  showCancelButton: true,  
+                  confirmButtonColor: "#222d32",  
+                  confirmButtonText: "Yes, Delete" ,
+                  cancelButtonColor:  "#222d32"
+                  }).then((result) => { // <--  
+                  if (result.value) { // <-- if accepted  
+                          del('status-delete/' + id);  
+                          }  
+                  });  
+    },
+    deleteCameraPopUp(){  
+           this.$swal({  
+                  title: "Do you want to delete this Camera?",  
+                  text: "This action can't be undone",  
+                  type: "warning",  
+                  showCancelButton: true,  
+                  confirmButtonColor: "#222d32",  
+                  confirmButtonText: "Yes, Delete" ,
+                  cancelButtonColor:  "#222d32"
+                  }).then((result) => { // <--  
+                  if (result.value) { // <-- if accepted  
+                          del('status-delete/' + id);  
+                          }  
+                  });  
+    }  
+  }
 };
 </script>
 

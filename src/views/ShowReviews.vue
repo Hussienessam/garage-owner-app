@@ -1,32 +1,49 @@
 
 <template>
-  <v-card max-width="750" class="mx-auto">
+<div>
+    <div><NavBar /></div>
+    <div class="body">
+    <br/>
 
-    <v-list three-line>
-      <template v-for="(item, index) in items">
+    <v-btn class="ma-2" dark @click="Back()">
+        <v-icon dark left>
+          mdi-arrow-left
+        </v-icon>Back
+    </v-btn>
 
-        <v-subheader v-if="item.header" :key="item.header" v-text="item.header"></v-subheader>
-        <v-divider v-else-if="item.divider" :key="index" :inset="item.inset"></v-divider>
+    <v-card max-width="750" class="mx-auto">
 
-        <v-list-item v-else :key="item.title">
-          <v-list-item-avatar>
-            <v-img :src="item.avatar"></v-img>
-          </v-list-item-avatar>
+      <v-list three-line>
+        <template v-for="(item, index) in items">
 
-          <v-list-item-content>
-               <v-list-item-title v-html="item.title"></v-list-item-title>
-            <v-list-item-subtitle v-html="item.subtitle"></v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
+          <v-subheader v-if="item.header" :key="item.header" v-text="item.header"></v-subheader>
+          <v-divider v-else-if="item.divider" :key="index" :inset="item.inset"></v-divider>
 
-      </template>
-    </v-list>
-  </v-card>
+          <v-list-item v-else :key="item.title">
+            <v-list-item-avatar>
+              <v-img :src="item.avatar"></v-img>
+            </v-list-item-avatar>
+
+            <v-list-item-content>
+                <v-list-item-title v-html="item.title"></v-list-item-title>
+              <v-list-item-subtitle v-html="item.subtitle"></v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+
+        </template>
+      </v-list>
+    </v-card>
+  </div>
+</div>
 </template>
 
 
 <script>
+import NavBar from "@/components/NavBar.vue";
   export default {
+    components: {
+      NavBar,
+    },
     data: () => ({
       items: [
         { header: 'Today' },
@@ -61,8 +78,16 @@
         },
       ],
     }),
+    methods: {
+      Back() {
+        this.$router.push({ name: "Home" });
+      }
+  }
   }
 </script>
+
+<style scoped src="../style/home.scss" lang="scss">
+</style>
 
 
         
