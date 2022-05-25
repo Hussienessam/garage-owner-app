@@ -19,8 +19,8 @@
                 </div>
               </div>
             </div>
-            <table class="table table-striped table-hover">
-              <h3>Garage no.1</h3>
+            <table v-for="Garage in Garages" v-bind:key="Garage.id" class="table table-striped table-hover">
+              <h3>Garage Details</h3>
               <v-container class="grey lighten-5 text-center">
                 <v-row no-gutters>
                   <template v-for="n in 2">
@@ -33,23 +33,23 @@
                               <thead>
                                 <tr>
                                   <td>Address :</td>
-                                  <td>Dokki</td>
+                                  <td>{{Garage.Address}}</td>
                                 </tr>
                                 <tr>
                                   <td>Longtitiude :</td>
-                                  <td>259.21.69</td>
+                                  <td>{{Garage.location['long']}}</td>
                                 </tr>
                                 <tr>
                                   <td>Latitiude :</td>
-                                  <td>12.398.024</td>
+                                  <td>{{Garage.location['lat']}}</td>
                                 </tr>
                                 <tr>
                                   <td>Num. of Cameras :</td>
-                                  <td>8</td>
+                                  <td>{{Garage.cameraIDs.length}}</td>
                                 </tr>
                                 <tr>
                                   <td>Capacity :</td>
-                                  <td>200</td>
+                                  <td>{{Garage.capacity}}</td>
                                 </tr>
                               </thead>
                             </template>
@@ -133,7 +133,7 @@
 <script>
 import NavBar from "@/components/NavBar.vue";
 import { mdiPencil, mdiDelete, mdiPlusBox, mdiEye } from "@mdi/js";
-
+import axios from "axios";
 export default {
   name: "Home",
   components: {
@@ -146,6 +146,18 @@ export default {
       pluss: mdiPlusBox,
       showw: mdiEye,
       deleteGarage: false,
+      Garages: [],
+      Garage: {
+        Address: "",
+        cameraIDs: [],
+        capacity: "",
+        location: []
+      },
+      Cameras: [],
+      Camera: {
+        address: "",
+        location: []
+      }
     }
   },
   methods: {
@@ -193,11 +205,44 @@ export default {
                           del('status-delete/' + id);  
                           }  
                   });  
-    }  
-  }
+    },
+    getGarages(id){
+      axios({
+        method: "get",
+        url: "http://164.92.174.146/get_owner_garages",
+        params: {
+          ownerID: id,
+        },
+      }).then((response) => {
+        console.log(response.data);
+        this.Garages = response.data;
+        // for(let i=0; i<this.Garages.length; i++){
+        //   for(let j=0; j<this.Garages[i].cameraIDs.length; j++){
+        //     this.getCameras(this.Garages[i].cameraIDs[j])
+        //   }
+        // }
+        // console.log(this.Cameras);
+      });
+    },
+    getCameras(camera_id){
+      axios({
+        method: "get",
+        url: "http://164.92.174.146/Camera/get",
+        params: {
+          id: camera_id,
+        },
+      }).then((response) => {
+        console.log(response.data);
+        this.Cameras.push(response.data);
+      });
+
+    }
+  },
+  mounted() {
+    this.getGarages("5");
+  },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped src="../style/home.scss" lang="scss">
 </style>
