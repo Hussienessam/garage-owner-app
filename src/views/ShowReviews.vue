@@ -39,6 +39,7 @@
 
 
 <script>
+import axios from "axios";
 import NavBar from "@/components/NavBar.vue";
   export default {
     components: {
@@ -77,12 +78,36 @@ import NavBar from "@/components/NavBar.vue";
           subtitle: '<span class="text--primary">Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.',
         },
       ],
+      Reviews: [],
+      Review:{
+        content:"",
+        date:"",
+        id:"",
+        driverID:"",
+        cameraID:""
+      }
     }),
     methods: {
       Back() {
         this.$router.push({ name: "Home" });
-      }
-  }
+      },
+      getReviews(garage_id){
+      axios({
+        method: "get",
+        url: "http://164.92.174.146/show_garage_reviews",
+        params: {
+          id: garage_id,
+        },
+      }).then((response) => {
+        console.log(response.data);
+        this.Reviews.push(response.data);
+      });
+
+    }
+  },
+  mounted() {
+    this.getReviews("1");
+  },
   }
 </script>
 

@@ -75,7 +75,7 @@
                       <v-card>
                         <v-card-text>
                           <h5><b>Cameras </b></h5>
-                          <v-simple-table>
+                          <v-simple-table >
                             <template v-slot:default>
                               <thead>
                                 <tr>
@@ -84,8 +84,8 @@
                                 </tr>
                               </thead>
                               <tbody>
-                                <tr>
-                                  <td>2FB</td>
+                                <tr v-for="Camera in Cameras" v-bind:key="Camera.id">
+                                  <td>{{Camera.address}}</td>
                                   <td>
                                       <v-btn text color="teal accent-3" v-on:click="deleteCameraPopUp">
                                         <v-icon left>
@@ -216,12 +216,12 @@ export default {
       }).then((response) => {
         console.log(response.data);
         this.Garages = response.data;
-        // for(let i=0; i<this.Garages.length; i++){
-        //   for(let j=0; j<this.Garages[i].cameraIDs.length; j++){
-        //     this.getCameras(this.Garages[i].cameraIDs[j])
-        //   }
-        // }
-        // console.log(this.Cameras);
+        for(let i=0; i<this.Garages.length; i++){
+          for(let j=0; j<this.Garages[i].cameraIDs.length; j++){
+            this.getCameras(this.Garages[i].cameraIDs[j])
+          }
+        }
+        console.log(this.Cameras);
       });
     },
     getCameras(camera_id){
