@@ -84,8 +84,9 @@
                                 </tr>
                               </thead>
                               <tbody>
-                                <tr v-for="Camera in Cameras" v-bind:key="Camera.id">
-                                  <td>{{Camera.address}}</td>
+                                <template v-for="i in Garage.cameraIDs.length">
+                                <tr :key="i">
+                                  <td>{{Garage.cameraIDs[i-1].address}}</td>
                                   <td>
                                       <v-btn text color="teal accent-3" v-on:click="deleteCameraPopUp">
                                         <v-icon left>
@@ -99,6 +100,7 @@
                                       </v-btn>
                                   </td>
                                 </tr>
+                                </template>
                               </tbody>
                             </template>
                           </v-simple-table>
@@ -153,11 +155,6 @@ export default {
         capacity: "",
         location: []
       },
-      Cameras: [],
-      Camera: {
-        address: "",
-        location: []
-      }
     }
   },
   methods: {
@@ -214,29 +211,9 @@ export default {
           ownerID: id,
         },
       }).then((response) => {
-        console.log(response.data);
         this.Garages = response.data;
-        for(let i=0; i<this.Garages.length; i++){
-          for(let j=0; j<this.Garages[i].cameraIDs.length; j++){
-            this.getCameras(this.Garages[i].cameraIDs[j])
-          }
-        }
-        console.log(this.Cameras);
       });
     },
-    getCameras(camera_id){
-      axios({
-        method: "get",
-        url: "http://164.92.174.146/Camera/get",
-        params: {
-          id: camera_id,
-        },
-      }).then((response) => {
-        console.log(response.data);
-        this.Cameras.push(response.data);
-      });
-
-    }
   },
   mounted() {
     this.getGarages("5");
