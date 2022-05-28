@@ -61,7 +61,7 @@
                             </v-icon>
                             Edit Garage
                           </v-btn>
-                          <v-btn text color="teal accent-4" v-on:click="deleteGaragePopUp">
+                          <v-btn text color="teal accent-4" v-on:click="deleteGaragePopUp(Garage.id)">
                             <v-icon left>
                               {{ deletee }}
                             </v-icon>
@@ -88,7 +88,7 @@
                                 <tr :key="i">
                                   <td>{{Garage.cameraIDs[i-1].address}}</td>
                                   <td>
-                                      <v-btn text color="teal accent-3" v-on:click="deleteCameraPopUp">
+                                      <v-btn text color="teal accent-3" v-on:click="deleteCameraPopUp(Garage.cameraIDs[i-1].id)">
                                         <v-icon left>
                                           {{ deletee }}
                                         </v-icon>
@@ -173,7 +173,7 @@ export default {
     showReviews(){
        this.$router.push({ name: "ShowReviews" });
     },
-    deleteGaragePopUp(){  
+    deleteGaragePopUp(id){  
            this.$swal({  
                   title: "Do you want to delete this Garage?",  
                   text: "This action can't be undone",  
@@ -182,13 +182,21 @@ export default {
                   confirmButtonColor: "#222d32",  
                   confirmButtonText: "Yes, Delete" ,
                   cancelButtonColor:  "#222d32"
-                  }).then((result) => { // <--  
-                  if (result.value) { // <-- if accepted  
-                          del('status-delete/' + id);  
-                          }  
+                  }).then((result) => {   
+                  if (result.value) { 
+                    axios({
+                        method: "delete",
+                        url: "http://164.92.174.146/Garage/delete",
+                        params: {
+                          id: id,
+                        },
+                      }).then((response) => {
+                        window.location.reload()
+                      });
+                  }  
                   });  
     },
-    deleteCameraPopUp(){  
+    deleteCameraPopUp(id){  
            this.$swal({  
                   title: "Do you want to delete this Camera?",  
                   text: "This action can't be undone",  
@@ -197,10 +205,18 @@ export default {
                   confirmButtonColor: "#222d32",  
                   confirmButtonText: "Yes, Delete" ,
                   cancelButtonColor:  "#222d32"
-                  }).then((result) => { // <--  
-                  if (result.value) { // <-- if accepted  
-                          del('status-delete/' + id);  
-                          }  
+                  }).then((result) => {   
+                  if (result.value) {   
+                     axios({
+                        method: "delete",
+                        url: "http://164.92.174.146/Camera/delete",
+                        params: {
+                          id: id,
+                        },
+                      }).then((response) => {
+                        window.location.reload()
+                      });
+                  }  
                   });  
     },
     getGarages(id){
