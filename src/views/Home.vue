@@ -191,6 +191,7 @@ export default {
                           id: id,
                         },
                       }).then((response) => {
+                        console.log(response);
                         window.location.reload()
                       });
                   }  
@@ -214,6 +215,7 @@ export default {
                           id: id,
                         },
                       }).then((response) => {
+                        console.log(response);
                         window.location.reload()
                       });
                   }  
