@@ -47,7 +47,7 @@ export default {
       Camera: {
         address: "",
         id: "",
-        location: []
+        location: {}
       },
     }
   },

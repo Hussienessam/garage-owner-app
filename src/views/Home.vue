@@ -159,7 +159,7 @@ export default {
   },
   methods: {
     addGarage() {
-      this.$router.push({ name: "AddGarage" });
+      this.$router.push({ name: "AddGarage" ,params: { id: "5"}});
     },
     editGarage(id){
        this.$router.push({ name: "EditGarage" , params: { id: id}});

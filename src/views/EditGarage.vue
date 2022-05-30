@@ -52,7 +52,7 @@ export default {
         Address: "",
         cameraIDs: [],
         capacity: "",
-        location: []
+        location: {}
       },
     }
   },

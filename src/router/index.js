@@ -29,7 +29,7 @@ const routes = [
     component: Signup
   },
   {
-    path: '/AddGarage',
+    path: '/AddGarage/:id',
     name: 'AddGarage',
     component: AddGarage
   },

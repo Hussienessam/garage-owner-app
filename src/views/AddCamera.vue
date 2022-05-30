@@ -14,20 +14,20 @@
               <div class="container-content">
                 <div class="form-group">
                   <label>Location</label>
-                  <input type="text" class="form-control" required />
+                  <input type="text" class="form-control" v-model="Camera.address" required />
                 </div>
                 <div class="form-group">
                   <label>Longtitude</label>
-                  <input type="text" class="form-control" required />
+                  <input type="text" class="form-control" v-model="Camera.location['long']" required />
                 </div>
                 <div class="form-group">
                   <label>Latitude</label>
-                  <input type="text" class="form-control" required />
+                  <input type="text" class="form-control" v-model="Camera.location['lat']" required />
                 </div>
               </div>
               <div class="modal-footer">
-                <button @click="Back()" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <button @click="Add()" class="btn mt-2" data-dismiss="modal">Add</button>
+                <v-btn @click="Back" class="btn btn-default" >Cancel</v-btn>
+                <v-btn @click="Add" class="btn mt-2" >Add</v-btn>
               </div>
             </form>
           </div>
@@ -39,13 +39,29 @@
 
 <script>
 import NavBar from "@/components/NavBar.vue";
-
+import axios from "axios";
 export default {
   components: {
     NavBar,
   },
+  data(){
+    return{
+      Camera: {
+        address: "",
+        location: {}
+      },
+    }
+  },
   methods: {
-    Add() {
+     Add() {
+       axios({
+        method: "post",
+        url: "http://164.92.174.146/Camera/add",
+        data:     JSON.stringify(this.Camera),
+        headers:{ 'content-type':'application/json'}
+      }).then((response) => {
+         this.$router.push({ name: "Home" });
+      });
      
     },
     Back() {
