@@ -34,7 +34,7 @@ const routes = [
     component: AddGarage
   },
   {
-    path: '/EditGarage',
+    path: '/EditGarage/:id',
     name: 'EditGarage',
     component: EditGarage
   },
@@ -44,7 +44,7 @@ const routes = [
     component: AddCamera
   },
   {
-    path: '/EditCamera',
+    path: '/EditCamera/:id',
     name: 'EditCamera',
     component: EditCamera
   },

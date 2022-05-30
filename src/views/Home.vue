@@ -55,7 +55,7 @@
                             </template>
                           </v-simple-table>
                         </v-card-text>
-                          <v-btn text color="teal accent-4" @click="editGarage()">
+                          <v-btn text color="teal accent-4" @click="editGarage(Garage.id)">
                             <v-icon left>
                               {{ editt }}
                             </v-icon>
@@ -93,7 +93,7 @@
                                           {{ deletee }}
                                         </v-icon>
                                       </v-btn>
-                                      <v-btn text color="teal accent-3" @click="editCamera()">
+                                      <v-btn text color="teal accent-3" @click="editCamera(Garage.cameraIDs[i-1].id)">
                                         <v-icon left>
                                           {{ editt }}
                                         </v-icon>
@@ -161,14 +161,14 @@ export default {
     addGarage() {
       this.$router.push({ name: "AddGarage" });
     },
-    editGarage(){
-       this.$router.push({ name: "EditGarage" });
+    editGarage(id){
+       this.$router.push({ name: "EditGarage" , params: { id: id}});
     },
     addCamera(){
       this.$router.push({ name: "AddCamera" });
     },
-    editCamera(){
-       this.$router.push({ name: "EditCamera" });
+    editCamera(id){
+       this.$router.push({ name: "EditCamera" , params: { id: id}});
     },
     showReviews(){
        this.$router.push({ name: "ShowReviews" });
