@@ -15,14 +15,6 @@
                   <label>Location</label>
                   <input type="text" class="form-control" v-model="Camera.address" required />
                 </div>
-                <div class="form-group">
-                  <label>Longtitude</label>
-                  <input type="text" class="form-control" v-model="Camera.location['long']" required />
-                </div>
-                <div class="form-group">
-                  <label>Latitude</label>
-                  <input type="text" class="form-control" v-model="Camera.location['lat']" required />
-                </div>
               </div>
               <div class="modal-footer">
                 <v-btn @click="Back" class="btn btn-default" >Cancel</v-btn>
@@ -47,7 +39,6 @@ export default {
       Camera: {
         address: "",
         id: "",
-        location: {}
       },
     }
   },

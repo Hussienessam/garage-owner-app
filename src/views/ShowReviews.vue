@@ -14,19 +14,17 @@
     <v-card max-width="750" class="mx-auto">
 
       <v-list three-line>
-        <template v-for="item in Reviews">
+        <template v-for="Review in Reviews">
 
-          <v-subheader v-if="item.date" :key="item.cameraID.address" v-text="item.cameraID.address"></v-subheader>
-          <v-divider v-else-if="divider" :key="item.cameraID.address" :inset="inset"></v-divider>
-
-          <v-list-item v-else :key="item.content">
+          <v-subheader v-if="Review.content" :key="Review.contnet" v-text="Review.date"></v-subheader>
+          <v-list-item>
             <v-list-item-avatar>
               <v-img :src="avatar"></v-img>
             </v-list-item-avatar>
 
             <v-list-item-content>
-                <v-list-item-title >{{item.content}}</v-list-item-title>
-              <v-list-item-subtitle v-text="item.subtitle"></v-list-item-subtitle>
+                <v-list-item-title v-html="Review.content"></v-list-item-title>
+              <v-list-item-subtitle v-html="Review.driverID.name"></v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
 
@@ -72,11 +70,12 @@ import NavBar from "@/components/NavBar.vue";
           },
         }).then((response) => {
           this.Reviews = response.data;
+
         });
     }, 
   },
   mounted() {
-    this.getReviews("MiRMzcYZlgHel32RQrin");
+    this.getReviews("bUqIPAhgDdktACYDSFeI");
   },
   }
 </script>

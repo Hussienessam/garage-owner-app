@@ -43,7 +43,8 @@
       return {
       email:"",
       password:"",
-      show: false
+      show: false,
+      error: ""
     }
   },
     methods: {
@@ -56,8 +57,9 @@
             password: this.password,
           },
       }).then((response) => {
-          console.log(response);
-          this.$router.push({ name: "Home" });
+        //   this.$session.start() 
+        //   this.$session.set('first_login', true) 
+          this.$router.push({ name: "Home" ,params: { id: response.data.id}});
       })
        .catch((err) => {
             this.show = true;

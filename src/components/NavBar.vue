@@ -9,9 +9,12 @@
 </v-toolbar>
 </template>
 <script>
+  // import VueSession from 'vue-session'
+  // Vue.use(VueSession)
   export default {
     methods: {
       Logout() {
+        this.$session.destroy()
         this.$router.push({ name: "Login" });
       }
     }

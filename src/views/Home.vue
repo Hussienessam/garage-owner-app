@@ -33,7 +33,7 @@
                               <thead>
                                 <tr>
                                   <td>Address :</td>
-                                  <td>{{Garage.Address}}</td>
+                                  <td>{{Garage.address}}</td>
                                 </tr>
                                 <tr>
                                   <td>Longtitiude :</td>
@@ -149,6 +149,7 @@ export default {
       showw: mdiEye,
       deleteGarage: false,
       Garages: [],
+      id: "",
       Garage: {
         Address: "",
         cameraIDs: [],
@@ -159,7 +160,7 @@ export default {
   },
   methods: {
     addGarage() {
-      this.$router.push({ name: "AddGarage" ,params: { id: "5"}});
+      this.$router.push({ name: "AddGarage" ,params: { id: this.id}});
     },
     editGarage(id){
        this.$router.push({ name: "EditGarage" , params: { id: id}});
@@ -229,12 +230,20 @@ export default {
           ownerID: id,
         },
       }).then((response) => {
-        this.Garages = response.data;
+        this.$session.set('Garages', response.data);
+        this.$router.go()
       });
     },
   },
   mounted() {
-    this.getGarages("5");
+     this.Garages = this.$session.get('Garages')
+  },
+  created() {
+    if (!this.$session.get('id')) {
+      this.$session.start() 
+      this.$session.set('id', this.$route.params.id) 
+      this.getGarages(this.$session.get('id'));
+    }
   },
 };
 </script>
