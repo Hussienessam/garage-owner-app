@@ -106,7 +106,7 @@
                           </v-simple-table>
                         </v-card-text>
                         <a class="btn mt-2">
-                          <v-btn text color="teal accent-4" @click="addCamera()">
+                          <v-btn text color="teal accent-4" @click="addCamera(Garage.id)">
                             <v-icon>
                               {{ pluss }}
                             </v-icon>
@@ -119,7 +119,7 @@
                   </template>
                 </v-row>
 				<br><br>
-							<v-btn text color="teal accent-4" @click="showReviews()">
+							<v-btn text color="teal accent-4" @click="showReviews(Garage.id)">
 								<v-icon left> {{ showw }} </v-icon>
 								Show Garage Reviews
 							</v-btn>
@@ -165,14 +165,14 @@ export default {
     editGarage(id){
        this.$router.push({ name: "EditGarage" , params: { id: id}});
     },
-    addCamera(){
-      this.$router.push({ name: "AddCamera" });
+    addCamera(id){
+      this.$router.push({ name: "AddCamera" , params: { id: id}});
     },
     editCamera(id){
        this.$router.push({ name: "EditCamera" , params: { id: id}});
     },
-    showReviews(){
-       this.$router.push({ name: "ShowReviews" });
+    showReviews(id){
+       this.$router.push({ name: "ShowReviews" , params: { id: id}});
     },
     deleteGaragePopUp(id){  
            this.$swal({  

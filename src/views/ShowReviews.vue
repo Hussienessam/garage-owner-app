@@ -54,7 +54,8 @@ import NavBar from "@/components/NavBar.vue";
         date:"",
         id:"",
         driverID:"",
-        cameraID:""
+        cameraID:"",
+        garageID:""
       }
     }),
     methods: {
@@ -75,8 +76,11 @@ import NavBar from "@/components/NavBar.vue";
     }, 
   },
   mounted() {
-    this.getReviews("bUqIPAhgDdktACYDSFeI");
+    this.getReviews(this.Review.garageID);
   },
+  created() {
+    this.Review.garageID = this.$route.params.id;
+  }
   }
 </script>
 

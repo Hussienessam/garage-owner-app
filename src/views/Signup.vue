@@ -53,8 +53,6 @@
       },
       methods: {
         Signup() {
-            // data: JSON.stringify(this.user),
-                // headers:{ 'content-type':'application/json'}
             axios({
                     method: "post",
                     url: "http://164.92.174.146/sign_up",

@@ -40,7 +40,7 @@ export default {
     return{
       Camera: {
         address: "",
-        location: {}
+        garage_id: ""
       },
     }
   },
@@ -48,7 +48,7 @@ export default {
      Add() {
        axios({
         method: "post",
-        url: "http://164.92.174.146/Camera/add",
+        url: "http://164.92.174.146/GarageCamera/add",
         data:     JSON.stringify(this.Camera),
         headers:{ 'content-type':'application/json'}
       }).then((response) => {
@@ -59,7 +59,10 @@ export default {
     Back() {
      this.$router.push({ name: "Home" });
     }
-  }
+  },
+  created() {
+    this.Camera.garage_id = this.$route.params.id;
+  },
 };
 </script>
 

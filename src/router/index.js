@@ -39,7 +39,7 @@ const routes = [
     component: EditGarage
   },
   {
-    path: '/AddCamera',
+    path: '/AddCamera/:id',
     name: 'AddCamera',
     component: AddCamera
   },
