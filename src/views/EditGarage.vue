@@ -75,7 +75,7 @@ export default {
         data:     JSON.stringify(this.Garage),
         headers:{ 'content-type':'application/json'}
       }).then((response) => {
-         this.$router.push({ name: "Home" });
+         this.$router.push({ name: "Home" , params: { update: true}});
       });
      
     },

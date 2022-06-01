@@ -14,7 +14,7 @@
                     placeholder="Name" v-model="user.name">
                 </div>
                 <div class="input-group">
-                    <input type="number" class="input" name="number" 
+                    <input type="text" class="input" name="number" 
                     placeholder="Phone Number" v-model="user.number">
                 </div>
                 <div class="input-group">
@@ -59,12 +59,9 @@
                     data: JSON.stringify(this.user),
                     headers:{ 'content-type':'application/json'}
                 }).then((response) => {
-                    alert(response);
                     this.$router.push({ name: "Login" });
                 })
                 .catch((err) => {
-                    alert(err);
-                    console.log(err);
                     this.error = err
                     this.show = true;
                 });

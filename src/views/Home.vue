@@ -32,24 +32,24 @@
                             <template v-slot:default>
                               <thead>
                                 <tr>
-                                  <td>Address :</td>
-                                  <td>{{Garage.address}}</td>
+                                  <td class="garage-field">Address :</td>
+                                  <td class="garage-info">{{Garage.address}}</td>
                                 </tr>
                                 <tr>
-                                  <td>Longtitiude :</td>
-                                  <td>{{Garage.location['long']}}</td>
+                                  <td class="garage-field">Longtitiude :</td>
+                                  <td class="garage-info">{{Garage.location['long']}}</td>
                                 </tr>
                                 <tr>
-                                  <td>Latitiude :</td>
-                                  <td>{{Garage.location['lat']}}</td>
+                                  <td class="garage-field">Latitiude :</td>
+                                  <td class="garage-info">{{Garage.location['lat']}}</td>
                                 </tr>
                                 <tr>
-                                  <td>Num. of Cameras :</td>
-                                  <td>{{Garage.cameraIDs.length}}</td>
+                                  <td class="garage-field">Num. of Cameras :</td>
+                                  <td class="garage-info">{{Garage.cameraIDs.length}}</td>
                                 </tr>
                                 <tr>
-                                  <td>Capacity :</td>
-                                  <td>{{Garage.capacity}}</td>
+                                  <td class="garage-field">Capacity :</td>
+                                  <td class="garage-info">{{Garage.capacity}}</td>
                                 </tr>
                               </thead>
                             </template>
@@ -87,7 +87,7 @@
                                 <template v-for="i in Garage.cameraIDs.length">
                                 <tr :key="i">
                                   <td>{{Garage.cameraIDs[i-1].address}}</td>
-                                  <td>
+                                  <td class="camera-tools">
                                       <v-btn text color="teal accent-3" v-on:click="deleteCameraPopUp(Garage.cameraIDs[i-1].id)">
                                         <v-icon left>
                                           {{ deletee }}
@@ -161,6 +161,7 @@ export default {
   methods: {
     addGarage() {
       this.$router.push({ name: "AddGarage" ,params: { id: this.id}});
+      
     },
     editGarage(id){
        this.$router.push({ name: "EditGarage" , params: { id: id}});
@@ -192,7 +193,7 @@ export default {
                           id: id,
                         },
                       }).then((response) => {
-                        console.log(response);
+                        this.$session.set('update', true)
                         window.location.reload()
                       });
                   }  
@@ -211,12 +212,12 @@ export default {
                   if (result.value) {   
                      axios({
                         method: "delete",
-                        url: "http://164.92.174.146/Camera/delete",
+                        url: "http://164.92.174.146/GarageCamera/delete",
                         params: {
                           id: id,
                         },
                       }).then((response) => {
-                        console.log(response);
+                        this.$session.set('update', true)
                         window.location.reload()
                       });
                   }  
@@ -236,7 +237,11 @@ export default {
     },
   },
   mounted() {
-     this.Garages = this.$session.get('Garages')
+    if(this.$route.params.update == true || this.$session.get('update') == true) {
+      this.$session.set('update', false)
+      this.getGarages(this.$session.get('id'))
+    }
+    this.Garages = this.$session.get('Garages')
   },
   created() {
     if (!this.$session.get('id')) {

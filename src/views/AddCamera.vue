@@ -52,7 +52,7 @@ export default {
         data:     JSON.stringify(this.Camera),
         headers:{ 'content-type':'application/json'}
       }).then((response) => {
-         this.$router.push({ name: "Home" });
+         this.$router.push({ name: "Home" , params: { update: true}});
       });
      
     },
