@@ -16,7 +16,7 @@
                     <input type="password" class="input pass" name="password" v-model="password">
                 </div>
                 <v-alert v-if="show" dismissible dense outlined>
-                    {{this.error}}
+                    invalid username or password
                 </v-alert>
                 <v-btn @click="Login" id="submit">LOG IN</v-btn>
                 <label id="register">Not Registered?<span>
@@ -37,7 +37,6 @@
       email:"",
       password:"",
       show: false,
-      error: ""
     }
   },
     methods: {
@@ -51,10 +50,7 @@
               },
             }).then((response) => {
                 resolve(response.data.is_owner);
-            })
-            .catch((err) => {
-                alert(err)
-          });
+            });
         })
         
       },
@@ -77,7 +73,6 @@
               
             })
             .catch((err) => {
-                  this.error = err;
                   this.show = true;
           });
         }
