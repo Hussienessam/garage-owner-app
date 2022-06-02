@@ -26,7 +26,7 @@
                     placeholder="Confirm Password">
                 </div>
                 <v-alert v-if="show" dismissible dense outlined>
-                    {{error}}
+                    invalid data, please check the fields again
                 </v-alert>
                 <v-btn @click="Signup" id="submit">SIGN UP</v-btn>
             </form>
@@ -47,7 +47,6 @@
                 is_owner: true
             },
             show: false,
-            error: ""
             
         }
       },
@@ -62,7 +61,6 @@
                     this.$router.push({ name: "Login" });
                 })
                 .catch((err) => {
-                    this.error = err
                     this.show = true;
                 });
         },
