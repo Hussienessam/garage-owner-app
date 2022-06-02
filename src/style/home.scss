@@ -137,6 +137,10 @@ html, body {
     border-color: #dddddd;
     font-size: 14px;
   }
+  .form-control {
+    margin: auto !important;
+    width: 70% !important;
+  }
   .modal textarea.form-control {
     resize: vertical;
   }
@@ -152,13 +156,20 @@ html, body {
   }
 
   .garage-info {
-    padding-right: 8rem !important;
+    padding-right: 4rem !important;;
   }
 
   .garage-field{
-    width: 60% !important;
+    padding-left: 5rem !important;
+    width: 52% !important;
   }
 
   .camera-tools{
     text-align: end !important;
+  }
+
+
+
+  v-card-text {
+    color: #222d32;
   }

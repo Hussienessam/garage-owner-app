@@ -130,6 +130,7 @@ input[type=checkbox] {
 }
 
 #submit {
+  margin-top: 1.5rem;
   color: white;
   background: #222d32;
   border-radius: 3px;

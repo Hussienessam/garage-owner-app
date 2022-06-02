@@ -1,6 +1,14 @@
+.review-body{
+    background: #222d32;
+    height: 100vh;
+}
+
 .body {
-    margin-top: 20px;
-    background: #eee;
+    margin-top: 25px;
+    background: white;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .review-list ul li .left span {
@@ -54,8 +62,8 @@
 
 .review-list ul li {
     border-bottom: 1px solid #dadbdd;
-    padding: 0 0 30px;
-    margin: 0 0 30px;
+    padding: 0 0 5px;
+    margin: 0 0 18px;
 }
 
 .review-list ul li .right {
@@ -63,11 +71,12 @@
 }
 
 .review-list ul li .review-description {
-    margin: 20px 0 0;
+    margin: 10px 0 0;
 }
 
 .review-list ul li .review-description p {
-    font-size: 14px;
+    font-size: 18px;
+    font-family: "Varela Round", sans-serif;
     margin: 0;
     display: flex;
 }

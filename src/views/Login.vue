@@ -15,15 +15,8 @@
                     <label for="password" class="label">PASSWORD</label>
                     <input type="password" class="input pass" name="password" v-model="password">
                 </div>
-                <div class="flex margin">
-                    <span id="remember-me-group">
-                        <input type="checkbox" name="remember-me" id="check-box">
-                        <label for="remember-me" id="remember-me">Remember Me</label>
-                    </span>
-                    <a href="/" id="forget-password">Forget Password?</a>
-                </div>
                 <v-alert v-if="show" dismissible dense outlined>
-                    Invalid email or password
+                    {{this.error}}
                 </v-alert>
                 <v-btn @click="Login" id="submit">LOG IN</v-btn>
                 <label id="register">Not Registered?<span>
@@ -48,23 +41,46 @@
     }
   },
     methods: {
-    Login() {
-        axios({
-        method: "get",
-        url: "http://164.92.174.146/log_in",
-        params: {
-            email: this.email,
-            password: this.password,
-          },
-      }).then((response) => {
-        //   this.$session.start() 
-        //   this.$session.set('first_login', true) 
-          this.$router.push({ name: "Home" ,params: { id: response.data.id}});
-      })
-       .catch((err) => {
-            this.show = true;
-      });
-     }
+      check_owner(id) {
+        return new Promise((resolve, reject) => {
+          axios({
+            method: "get",
+            url: "http://164.92.174.146/Owner/get",
+            params: {
+                id: id
+              },
+            }).then((response) => {
+                resolve(response.data.is_owner);
+            })
+            .catch((err) => {
+                alert(err)
+          });
+        })
+        
+      },
+      Login() {
+          axios({
+            method: "get",
+            url: "http://164.92.174.146/log_in",
+            params: {
+                email: this.email,
+                password: this.password,
+              },
+            }).then(async(response) => {
+                let is_owner = await this.check_owner(response.data.id)
+                if(is_owner === true){
+                  this.$router.push({ name: "Home" ,params: { id: response.data.id}});
+                }
+                else {
+                  throw "user is not an owner";
+                }
+              
+            })
+            .catch((err) => {
+                  this.error = err;
+                  this.show = true;
+          });
+        }
    }
   }
 </script>

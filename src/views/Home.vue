@@ -51,6 +51,7 @@
                                   <td class="garage-field">Capacity :</td>
                                   <td class="garage-info">{{Garage.capacity}}</td>
                                 </tr>
+                                
                               </thead>
                             </template>
                           </v-simple-table>
@@ -154,7 +155,7 @@ export default {
         Address: "",
         cameraIDs: [],
         capacity: "",
-        location: []
+        location: [],
       },
     }
   },
@@ -224,31 +225,29 @@ export default {
                   });  
     },
     getGarages(id){
-      axios({
+      return axios({
         method: "get",
         url: "http://164.92.174.146/get_owner_garages",
         params: {
           ownerID: id,
         },
-      }).then((response) => {
-        this.$session.set('Garages', response.data);
-        this.$router.go()
       });
     },
-  },
-  mounted() {
+    },
+  async mounted() {
     if(this.$route.params.update == true || this.$session.get('update') == true) {
-      this.$session.set('update', false)
-      this.getGarages(this.$session.get('id'))
+      const response = await this.getGarages(this.$session.get('id'));
+      this.$session.set('Garages', response.data);
+      this.Garages = response.data;
     }
-    this.Garages = this.$session.get('Garages')
-  },
-  created() {
     if (!this.$session.get('id')) {
       this.$session.start() 
       this.$session.set('id', this.$route.params.id) 
-      this.getGarages(this.$session.get('id'));
+      const response = await this.getGarages(this.$session.get('id'));
+      this.$session.set('Garages', response.data);
+      this.Garages = response.data;
     }
+    this.Garages = this.$session.get('Garages')
   },
 };
 </script>

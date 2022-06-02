@@ -2,6 +2,7 @@
 <template>
   <div>
     <div><NavBar /></div>
+    <div class="review-body">
     <v-btn class="ma-2" dark @click="Back()">
         <v-icon dark left>
           mdi-arrow-left
@@ -44,6 +45,7 @@
     </div>
   </div>
   </div>
+  </div>
 </template>
 
 
@@ -84,10 +86,14 @@ export default {
     }
     },
   mounted() {
-    this.getReviews(this.Review.garageID);
+    this.getReviews(this.$session.get('garage_id'));
   },
   created() {
-    this.Review.garageID = this.$route.params.id;
+     if (!this.$session.get('garage_id')) {
+       this.Review.garageID = this.$route.params.id;
+       this.$session.set('garage_id', this.$route.params.id) 
+    }
+    
   },
 };
 </script>
