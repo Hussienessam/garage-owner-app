@@ -236,16 +236,20 @@ export default {
     },
   async mounted() {
     if(this.$route.params.update == true || this.$session.get('update') == true) {
+      this.$isLoading(true)
       const response = await this.getGarages(this.$session.get('id'));
       this.$session.set('Garages', response.data);
       this.Garages = response.data;
+      this.$isLoading(false)
     }
     if (!this.$session.get('id')) {
+      this.$isLoading(true)
       this.$session.start() 
       this.$session.set('id', this.$route.params.id) 
       const response = await this.getGarages(this.$session.get('id'));
       this.$session.set('Garages', response.data);
       this.Garages = response.data;
+      this.$isLoading(false)
     }
     this.Garages = this.$session.get('Garages')
   },
