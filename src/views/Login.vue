@@ -42,9 +42,12 @@
     methods: {
       check_owner(id) {
         return new Promise((resolve, reject) => {
+          const token = "Bearer ".concat(localStorage.getItem("usertoken"));
+        console.log(token);
           axios({
             method: "get",
             url: "http://164.92.174.146/Owner/get",
+            headers: { Authorization: token },
             params: {
                 id: id
               },
@@ -63,13 +66,14 @@
                 password: this.password,
               },
             }).then(async(response) => {
-                let is_owner = await this.check_owner(response.data.id)
-                if(is_owner === true){
+                localStorage.setItem("usertoken", response.data.idToken);
+                //let is_owner = await this.check_owner(response.data.id)
+               // if(is_owner === true){
                   this.$router.push({ name: "Home" ,params: { id: response.data.id}});
-                }
+                /*}
                 else {
                   throw "user is not an owner";
-                }
+                }*/
               
             })
             .catch((err) => {
