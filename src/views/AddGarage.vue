@@ -13,7 +13,7 @@
               <div class="container-content">
                 <div class="form-group">
                   <label>Address</label>
-                  <input type="text" class="form-control" v-model="Garage.Address" required />
+                  <input type="text" class="form-control" v-model="Garage.address" required />
                 </div>
                 <div class="form-group">
                   <label>Longtitude</label>
@@ -48,8 +48,9 @@ export default {
   },
   data(){
     return{
+      token: "",
       Garage: {
-        Address: "",
+        address: "",
         capacity: "",
         location: {},
         ownerID:"",

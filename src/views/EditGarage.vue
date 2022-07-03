@@ -50,10 +50,11 @@ export default {
     return{
       token: "",
       Garage: {
+        id: "",
         address: "",
         cameraIDs: [],
         capacity: "",
-        location: {}
+        location: {'long':"", 'lat':""}
       },
     }
   },
@@ -74,7 +75,9 @@ export default {
        axios({
         method: "put",
         url: "http://164.92.174.146/Garage/update",
-        data:     JSON.stringify(this.Garage),
+        data:     JSON.stringify({"address": this.Garage.address, "cameraIDs": this.Garage.cameraIDs, 
+        "capacity": this.Garage.capacity, "location": {"lat": String(this.Garage.location.lat), 
+        "long": String(this.Garage.location.long)}, "id": this.Garage.id}),
         headers:{ 'content-type':'application/json', Authorization: this.token}
       }).then((response) => {
          this.$router.push({ name: "Home" , params: { update: true}});
@@ -86,6 +89,7 @@ export default {
     }
   },
   created() {
+    this.Garage.id = this.$route.params.id
     this.token = "Bearer ".concat(localStorage.getItem("usertoken"));
     this.getGarage(this.$route.params.id);
   },

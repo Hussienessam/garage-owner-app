@@ -40,6 +40,7 @@ export default {
       Camera: {
         address: "",
         id: "",
+        garage_id: ""
       },
     }
   },
@@ -47,7 +48,7 @@ export default {
      getCamera(id){
       axios({
         method: "get",
-        url: "http://164.92.174.146/Camera/get",
+        url: "http://164.92.174.146/GarageCamera/get",
         headers:{Authorization: this.token},        
         params: {
           id: id,
@@ -59,7 +60,7 @@ export default {
     Save() {
        axios({
         method: "put",
-        url: "http://164.92.174.146/Camera/update",
+        url: "http://164.92.174.146/GarageCamera/update",
         data:     JSON.stringify(this.Camera),
         headers:{ 'content-type':'application/json', Authorization: this.token}
       }).then((response) => {

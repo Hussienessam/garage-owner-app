@@ -91,6 +91,7 @@ export default {
     this.getReviews(this.$session.get('garage_id'));
   },
   created() {
+    this.token = "Bearer ".concat(localStorage.getItem("usertoken"));
      if (!this.$session.get('garage_id')) {
        this.Review.garageID = this.$route.params.id;
        this.$session.set('garage_id', this.$route.params.id) 
