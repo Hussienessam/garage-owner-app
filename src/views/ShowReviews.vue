@@ -58,6 +58,7 @@ export default {
     NavBar,
   },
   data: () => ({
+    token: "",
     avatar: SignupAvatar,
     Reviews: [],
     Review: {
@@ -77,6 +78,7 @@ export default {
       axios({
         method: "get",
         url: "http://164.92.174.146/show_garage_reviews",
+        headers: { Authorization: this.token},
         params: {
           garageID: garage_id,
         },

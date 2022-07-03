@@ -151,6 +151,7 @@ export default {
       deleteGarage: false,
       Garages: [],
       id: "",
+      token: "",
       Garage: {
         Address: "",
         cameraIDs: [],
@@ -162,7 +163,6 @@ export default {
   methods: {
     addGarage() {
       this.$router.push({ name: "AddGarage" ,params: { id: this.id}});
-      
     },
     editGarage(id){
        this.$router.push({ name: "EditGarage" , params: { id: id}});
@@ -190,6 +190,7 @@ export default {
                     axios({
                         method: "delete",
                         url: "http://164.92.174.146/Garage/delete",
+                        headers: { Authorization: this.token},
                         params: {
                           id: id,
                         },
@@ -214,6 +215,7 @@ export default {
                      axios({
                         method: "delete",
                         url: "http://164.92.174.146/GarageCamera/delete",
+                        headers: { Authorization: this.token},
                         params: {
                           id: id,
                         },
@@ -225,11 +227,10 @@ export default {
                   });  
     },
     getGarages(id){
-      const token = "Bearer ".concat(localStorage.getItem("usertoken"));
       return axios({
         method: "get",
         url: "http://164.92.174.146/get_owner_garages",
-        headers: { Authorization: token},
+        headers: { Authorization: this.token},
         params: {
           ownerID: id,
         },
@@ -237,22 +238,22 @@ export default {
     },
     },
   async mounted() {
-    console.log(this.$session.get('id'))
+    this.token = "Bearer ".concat(localStorage.getItem("usertoken"));
     if(this.$route.params.update == true || this.$session.get('update') == true) {
-     // this.$isLoading(true)
+      this.$isLoading(true)
       const response = await this.getGarages(this.$session.get('id'));
       this.$session.set('Garages', response.data);
       this.Garages = response.data;
-      //this.$isLoading(false)
+      this.$isLoading(false)
     }
     if (!this.$session.get('id')) {
-     // this.$isLoading(true)
+      this.$isLoading(true)
       this.$session.start() 
       this.$session.set('id', this.$route.params.id) 
       const response = await this.getGarages(this.$session.get('id'));
       this.$session.set('Garages', response.data);
       this.Garages = response.data;
-     // this.$isLoading(false)
+      this.$isLoading(false)
     }
     this.Garages = this.$session.get('Garages')
   },

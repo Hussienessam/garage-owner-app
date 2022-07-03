@@ -67,13 +67,13 @@
               },
             }).then(async(response) => {
                 localStorage.setItem("usertoken", response.data.idToken);
-                //let is_owner = await this.check_owner(response.data.id)
-               // if(is_owner === true){
+                let is_owner = await this.check_owner(response.data.id)
+                if(is_owner === true){
                   this.$router.push({ name: "Home" ,params: { id: response.data.id}});
-                /*}
+                }
                 else {
                   throw "user is not an owner";
-                }*/
+                }
               
             })
             .catch((err) => {

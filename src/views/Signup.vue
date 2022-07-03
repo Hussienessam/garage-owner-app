@@ -46,8 +46,7 @@
                 password:"",
                 is_owner: true
             },
-            show: false,
-            
+            show: false,   
         }
       },
       methods: {

@@ -36,6 +36,7 @@ export default {
   },
    data(){
     return{
+      token: "",
       Camera: {
         address: "",
         id: "",
@@ -47,6 +48,7 @@ export default {
       axios({
         method: "get",
         url: "http://164.92.174.146/Camera/get",
+        headers:{Authorization: this.token},        
         params: {
           id: id,
         },
@@ -59,7 +61,7 @@ export default {
         method: "put",
         url: "http://164.92.174.146/Camera/update",
         data:     JSON.stringify(this.Camera),
-        headers:{ 'content-type':'application/json'}
+        headers:{ 'content-type':'application/json', Authorization: this.token}
       }).then((response) => {
          this.$router.push({ name: "Home" , params: { update: true}});
       });
@@ -70,6 +72,7 @@ export default {
     }
   },
   created() {
+    this.token = "Bearer ".concat(localStorage.getItem("usertoken"));
     this.getCamera(this.$route.params.id);
   },
 };

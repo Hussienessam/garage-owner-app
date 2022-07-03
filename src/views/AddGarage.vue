@@ -63,7 +63,7 @@ export default {
         method: "post",
         url: "http://164.92.174.146/Garage/add",
         data:     JSON.stringify(this.Garage),
-        headers:{ 'content-type':'application/json'}
+        headers:{ 'content-type':'application/json', Authorization: this.token}
       }).then((response) => {
          this.$router.push({ name: "Home" , params: { update: true}});
       });
@@ -74,6 +74,7 @@ export default {
     }
   },
   created() {
+    this.token = "Bearer ".concat(localStorage.getItem("usertoken"));
     this.Garage.ownerID = this.$route.params.id;
   },
 };

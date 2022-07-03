@@ -38,6 +38,7 @@ export default {
   },
   data(){
     return{
+      token: "",
       Camera: {
         address: "",
         garage_id: ""
@@ -50,7 +51,7 @@ export default {
         method: "post",
         url: "http://164.92.174.146/GarageCamera/add",
         data:     JSON.stringify(this.Camera),
-        headers:{ 'content-type':'application/json'}
+        headers:{ 'content-type':'application/json', Authorization: this.token}
       }).then((response) => {
          this.$router.push({ name: "Home" , params: { update: true}});
       });
@@ -61,6 +62,7 @@ export default {
     }
   },
   created() {
+    this.token = "Bearer ".concat(localStorage.getItem("usertoken"));
     this.Camera.garage_id = this.$route.params.id;
   },
 };

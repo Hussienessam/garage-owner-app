@@ -48,6 +48,7 @@ export default {
   },
   data(){
     return{
+      token: "",
       Garage: {
         address: "",
         cameraIDs: [],
@@ -61,6 +62,7 @@ export default {
       axios({
         method: "get",
         url: "http://164.92.174.146/Garage/get",
+        headers:{Authorization: this.token},
         params: {
           id: id,
         },
@@ -73,7 +75,7 @@ export default {
         method: "put",
         url: "http://164.92.174.146/Garage/update",
         data:     JSON.stringify(this.Garage),
-        headers:{ 'content-type':'application/json'}
+        headers:{ 'content-type':'application/json', Authorization: this.token}
       }).then((response) => {
          this.$router.push({ name: "Home" , params: { update: true}});
       });
@@ -84,6 +86,7 @@ export default {
     }
   },
   created() {
+    this.token = "Bearer ".concat(localStorage.getItem("usertoken"));
     this.getGarage(this.$route.params.id);
   },
 };
