@@ -79,6 +79,7 @@
     font-family: "Varela Round", sans-serif;
     margin: 0;
     display: flex;
+    text-align: left;
 }
 
 .review-list ul li .publish {

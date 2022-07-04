@@ -16,7 +16,7 @@
                     <input type="password" class="input pass" name="password" v-model="password">
                 </div>
                 <v-alert v-if="show" dismissible dense outlined>
-                    invalid username or password
+                    {{this.error}}
                 </v-alert>
                 <v-btn @click="Login" id="submit">LOG IN</v-btn>
                 <label id="register">Not Registered?<span>
@@ -34,6 +34,7 @@
     components: {NavBar},
     data () {
       return {
+      error:"",
       email:"",
       password:"",
       show: false,
@@ -43,7 +44,6 @@
       check_owner(id) {
         return new Promise((resolve, reject) => {
           const token = "Bearer ".concat(localStorage.getItem("usertoken"));
-        console.log(token);
           axios({
             method: "get",
             url: "http://164.92.174.146/Owner/get",
@@ -58,6 +58,8 @@
         
       },
       Login() {
+          this.show = false
+          this.error = "invalid username or password"
           axios({
             method: "get",
             url: "http://164.92.174.146/log_in",
@@ -72,12 +74,12 @@
                   this.$router.push({ name: "Home" ,params: { id: response.data.id}});
                 }
                 else {
-                  throw "user is not an owner";
+                  this.error = "user is not an owner";
+                  throw ""
                 }
-              
             })
             .catch((err) => {
-                  this.show = true;
+                this.show = true;
           });
         }
    }
