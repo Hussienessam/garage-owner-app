@@ -92,11 +92,7 @@ export default {
   },
   created() {
     this.token = "Bearer ".concat(localStorage.getItem("usertoken"));
-     if (!this.$session.get('garage_id')) {
-       this.Review.garageID = this.$route.params.id;
-       this.$session.set('garage_id', this.$route.params.id) 
-    }
-    
+    this.Review.garageID = this.$session.get('garage_id');
   },
 };
 </script>
