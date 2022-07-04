@@ -91,8 +91,12 @@ export default {
     this.getReviews(this.$session.get('garage_id'));
   },
   created() {
-    this.token = "Bearer ".concat(localStorage.getItem("usertoken"));
-    this.Review.garageID = this.$session.get('garage_id');
+    if (!localStorage.getItem("usertoken")) {
+      this.$router.push({ name: "Login" });
+    }
+    else{
+      this.token = "Bearer ".concat(localStorage.getItem("usertoken"));
+    }
   },
 };
 </script>
