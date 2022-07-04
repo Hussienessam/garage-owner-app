@@ -10,6 +10,9 @@
       </v-btn>
     <div class="body">
     <div class="container">
+      <v-alert v-if="error"  color="blue-grey" dense icon="mdi-alert" prominent >
+               No Reviews Available for this Garage..
+      </v-alert>
       <div v-for="Review in Reviews" v-bind:key="Review.id" class="review-list">
         <ul>
           <li>
@@ -58,6 +61,7 @@ export default {
     NavBar,
   },
   data: () => ({
+    error:false,
     token: "",
     avatar: SignupAvatar,
     Reviews: [],
@@ -83,7 +87,11 @@ export default {
           garageID: garage_id,
         },
       }).then((response) => {
-        this.Reviews = response.data;
+         if(response.data.length===0){
+            this.error = true;
+         }else{
+             this.Reviews = response.data;
+         }  
       });
     }
     },
