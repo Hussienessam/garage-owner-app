@@ -176,7 +176,8 @@ export default {
        this.$router.push({ name: "EditCamera" , params: { id: id}});
     },
     showReviews(id){
-       this.$router.push({ name: "ShowReviews" , params: { id: id}});
+       this.$session.set('garage_id', id) 
+       this.$router.push({ name: "ShowReviews"});
     },
     deleteGaragePopUp(id){  
            this.$swal({  
