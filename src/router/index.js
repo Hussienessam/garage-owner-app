@@ -8,6 +8,7 @@ import EditGarage from '../views/EditGarage.vue'
 import AddCamera from '../views/AddCamera.vue'
 import EditCamera from '../views/EditCamera.vue'
 import ShowReviews from "@/views/ShowReviews.vue";
+import PageNotFound from '../views/PageNotFound.vue'
 
 Vue.use(VueRouter)
 
@@ -53,6 +54,11 @@ const routes = [
     name: 'ShowReviews',
     component: ShowReviews
   },
+  { 
+    path: "*", 
+    name: 'PageNotFound',
+    component: PageNotFound 
+  }
 ]
 
 const router = new VueRouter({

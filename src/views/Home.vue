@@ -254,19 +254,16 @@ export default {
       if(this.$route.params.update == true || this.$session.get('update') == true) {
         this.$isLoading(true)
         const response = await this.getGarages(this.$session.get('id'));
-        if(response.data.length===0){
-          this.$session.set('empty', true);
-          this.error = this.$session.get('empty')
-           this.$session.set('Garages', response.data);
-           this.Garages = response.data;
-            this.$isLoading(false)
-        }else{
-          this.$session.set('empty', false);
-          this.error = this.$session.get('empty')
-          this.$session.set('Garages', response.data);
-          this.Garages = response.data;
-          this.$isLoading(false)
+        if(response.data.length == 0){
+          this.$session.set('empty', true); 
         }
+        else {
+          this.$session.set('empty', false);
+        }
+        this.error = this.$session.get('empty')
+        this.$session.set('Garages', response.data);
+        this.Garages = response.data;
+        this.$isLoading(false)
       }
       if (!this.$session.get('id')) {
         this.$isLoading(true)
@@ -274,16 +271,15 @@ export default {
         this.$session.set('id', this.$route.params.id) 
         const response = await this.getGarages(this.$session.get('id'));
         if(response.data.length===0){
-            this.$session.set('empty', true);
-            this.error = this.$session.get('empty')
-            this.$isLoading(false)
-        }else{
+          this.$session.set('empty', true);
+        }
+        else {
           this.$session.set('empty', false);
-          this.error = this.$session.get('empty')
-          this.$session.set('Garages', response.data);
-          this.Garages = response.data;
-          this.$isLoading(false)
-       }
+        }
+        this.error = this.$session.get('empty')
+        this.$session.set('Garages', response.data);
+        this.Garages = response.data;
+        this.$isLoading(false)
       }
       this.Garages = this.$session.get('Garages')
       }
