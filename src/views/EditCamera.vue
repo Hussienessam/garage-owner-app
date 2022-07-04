@@ -73,8 +73,13 @@ export default {
     }
   },
   created() {
-    this.token = "Bearer ".concat(localStorage.getItem("usertoken"));
-    this.getCamera(this.$route.params.id);
+    if (!localStorage.getItem("usertoken")) {
+      this.$router.push({ name: "Login" });
+    }
+    else{
+      this.token = "Bearer ".concat(localStorage.getItem("usertoken"));
+      this.getCamera(this.$route.params.id);
+    }
   },
 };
 </script>

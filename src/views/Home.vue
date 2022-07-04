@@ -240,24 +240,29 @@ export default {
     },
     },
   async mounted() {
-    this.token = "Bearer ".concat(localStorage.getItem("usertoken"));
-    if(this.$route.params.update == true || this.$session.get('update') == true) {
-      this.$isLoading(true)
-      const response = await this.getGarages(this.$session.get('id'));
-      this.$session.set('Garages', response.data);
-      this.Garages = response.data;
-      this.$isLoading(false)
+    if (!localStorage.getItem("usertoken")) {
+      this.$router.push({ name: "Login" });
     }
-    if (!this.$session.get('id')) {
-      this.$isLoading(true)
-      this.$session.start() 
-      this.$session.set('id', this.$route.params.id) 
-      const response = await this.getGarages(this.$session.get('id'));
-      this.$session.set('Garages', response.data);
-      this.Garages = response.data;
-      this.$isLoading(false)
-    }
-    this.Garages = this.$session.get('Garages')
+    else{
+      this.token = "Bearer ".concat(localStorage.getItem("usertoken"));
+      if(this.$route.params.update == true || this.$session.get('update') == true) {
+        this.$isLoading(true)
+        const response = await this.getGarages(this.$session.get('id'));
+        this.$session.set('Garages', response.data);
+        this.Garages = response.data;
+        this.$isLoading(false)
+      }
+      if (!this.$session.get('id')) {
+        this.$isLoading(true)
+        this.$session.start() 
+        this.$session.set('id', this.$route.params.id) 
+        const response = await this.getGarages(this.$session.get('id'));
+        this.$session.set('Garages', response.data);
+        this.Garages = response.data;
+        this.$isLoading(false)
+      }
+      this.Garages = this.$session.get('Garages')
+      }
   },
 };
 </script>

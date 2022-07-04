@@ -89,9 +89,14 @@ export default {
     }
   },
   created() {
-    this.Garage.id = this.$route.params.id
-    this.token = "Bearer ".concat(localStorage.getItem("usertoken"));
-    this.getGarage(this.$route.params.id);
+    if (!localStorage.getItem("usertoken")) {
+      this.$router.push({ name: "Login" });
+    }
+    else{
+      this.Garage.id = this.$route.params.id
+      this.token = "Bearer ".concat(localStorage.getItem("usertoken"));
+      this.getGarage(this.$route.params.id);
+    }
   },
 };
 </script>
