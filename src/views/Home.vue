@@ -69,6 +69,11 @@
                             Delete Garage
                           </v-btn>
                         <v-spacer></v-spacer>
+                        <br><br>
+                      <v-btn text color="teal accent-4" v-on:click="showReviews(Garage.id)">
+                        <v-icon left> {{ showw }} </v-icon>
+                        Show Garage Reviews
+                      </v-btn>
                       </v-card>
                     </v-col>
 
@@ -116,14 +121,11 @@
                         </a>
                         <v-divider></v-divider>
                       </v-card>
+                      
                     </v-col>
                   </template>
                 </v-row>
-				<br><br>
-							<v-btn text color="teal accent-4" @click="showReviews(Garage.id)">
-								<v-icon left> {{ showw }} </v-icon>
-								Show Garage Reviews
-							</v-btn>
+				
               </v-container>
             </table>
           </div>
