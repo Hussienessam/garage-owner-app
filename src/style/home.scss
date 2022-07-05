@@ -1,16 +1,16 @@
-html, body {
-  overflow-y: scroll !important;
-}
-
 .body {
+    display: block;
+    overflow: auto;
     color: #566787;
     background: #222d32;
     font-family: "Varela Round", sans-serif;
     font-size: 13px;
-    height: 200vh;
     margin: 0;
     padding: 0;
   }
+.inner-page {
+  height: 95vh;
+}
   .table-responsive {
       margin: 30px 0;
   }
@@ -113,6 +113,10 @@ html, body {
   /* Modal styles */
   .modal .modal-dialog {
     max-width: 400px;
+  }
+
+  .edit-dialog {
+    margin: 0.25rem auto;
   }
   .modal .modal-header,
   .modal .modal-body,

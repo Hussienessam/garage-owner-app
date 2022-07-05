@@ -1,7 +1,7 @@
 <template>
 <div>
     <div><NavBar /></div>
-    <div class="body">
+    <div class="body inner-page">
     <br/>
         <div class="modal-dialog">
           <div class="modal-content">
@@ -30,7 +30,7 @@
               </div>
               <div class="modal-footer">
                  <v-btn @click="Back" class="btn btn-default" >Cancel</v-btn>
-                <v-btn @click="Save" class="btn mt-2" >Save</v-btn>
+                <v-btn @click="Save" class="btn" >Save</v-btn>
               </div>
             </form>
           </div>
