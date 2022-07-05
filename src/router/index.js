@@ -7,6 +7,7 @@ import AddGarage from '../views/AddGarage.vue'
 import EditGarage from '../views/EditGarage.vue'
 import AddCamera from '../views/AddCamera.vue'
 import EditCamera from '../views/EditCamera.vue'
+import EditProfile from '../views/EditProfile.vue'
 import ShowReviews from "@/views/ShowReviews.vue";
 import PageNotFound from '../views/PageNotFound.vue'
 
@@ -28,6 +29,11 @@ const routes = [
     path: '/signup',
     name: 'Signup',
     component: Signup
+  },
+  {
+    path: '/edit-profile',
+    name: 'EditProfile',
+    component: EditProfile
   },
   {
     path: '/AddGarage/:id',

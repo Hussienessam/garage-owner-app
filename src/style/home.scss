@@ -168,8 +168,11 @@ html, body {
     text-align: end !important;
   }
 
-
-
   v-card-text {
     color: #222d32;
+  }
+
+  .edit-error{
+    width: 70%;
+    margin: auto;
   }

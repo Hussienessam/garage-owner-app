@@ -10,15 +10,9 @@
   import NavBar from "@/components/NavBar.vue";
   export default {
     name: "PageNotFound",
-    components: {NavBar},
-    data () {
-      return {
-    }
-  },
-    methods: {
-   }
+    components: {NavBar}
   }
 </script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped src="../style/404.css" lang="css">
 </style>

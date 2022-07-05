@@ -1,0 +1,11 @@
+.edit {
+    margin-right: 3rem;
+}
+
+.edit>.v-icon {
+    padding-left: 2.5rem;
+}
+
+.logout {
+    padding-left: 1rem;
+}
