@@ -82,7 +82,12 @@
                 this.show = true;
           });
         }
-   }
+   },
+   created () {
+    if (localStorage.getItem("usertoken")) {
+      this.$router.push({ name: "Home" });
+    }
+   },
   }
 </script>
 <style scoped src="../style/login.css" lang="css">
