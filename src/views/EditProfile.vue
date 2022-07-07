@@ -1,7 +1,7 @@
 <template>
 <div>
     <div><NavBar /></div>
-    <div class="body">
+    <div class="body inner-page">
     <br/>
         <div class="modal-dialog edit-dialog">
           <div class="modal-content">

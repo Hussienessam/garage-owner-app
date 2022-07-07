@@ -41,7 +41,7 @@ export default {
       token: "",
       Camera: {
         address: "",
-        garage_id: ""
+        garageID: ""
       },
     }
   },
@@ -67,7 +67,7 @@ export default {
     }
     else{
       this.token = "Bearer ".concat(localStorage.getItem("usertoken"));
-      this.Camera.garage_id = this.$route.params.id;
+      this.Camera.garageID = this.$route.params.id;
     }
   },
 };

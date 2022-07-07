@@ -40,7 +40,7 @@ export default {
       Camera: {
         address: "",
         id: "",
-        garage_id: ""
+        garageID: ""
       },
     }
   },
