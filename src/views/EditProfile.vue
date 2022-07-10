@@ -1,7 +1,7 @@
 <template>
 <div>
     <div><NavBar /></div>
-    <div class="body inner-page">
+    <div class="body edit-profile">
     <br/>
         <div class="modal-dialog edit-dialog">
           <div class="modal-content">
@@ -25,7 +25,7 @@
                 </div>
                 <div class="form-group">
                   <label>Password</label>
-                  <input class="form-control" type="password" v-model="User.password" required />
+                  <input class="form-control" type="password" v-model="User.old_password" required />
                 </div>
                 <div class="form-group">
                   <label>New Password</label>
@@ -62,13 +62,8 @@ export default {
         name: "",
         id: "",
         email: "",
-        password: "",
+        old_password: "",
         new_password: "",
-        number: "",
-      },
-      old_user: {
-        name: "",
-        email: "",
         number: "",
       }
     }
@@ -84,83 +79,28 @@ export default {
         },
       }).then((response) => {
         this.User = response.data;
-        this.old_user.name = this.User.name;
-        this.old_user.email = this.User.email;
-        this.old_user.number = this.User.number;
+        this.User.old_password = ""
+        this.User.new_password = ""
       });
     },
-    async update_name() {
+    async update_user() {
         try {
             await axios({
-            method: "POST",
-            url: "http://164.92.174.146/update_name",
-            data:  JSON.stringify({"name": this.User.name, "email": this.User.email}),
+            method: "PUT",
+            url: "http://164.92.174.146/update_user",
+            data:  JSON.stringify(this.User),
             headers:{ 'content-type':'application/json', Authorization: this.token}
             })
         }
         catch(err) {
             this.show = true
-            throw new Error("error updating name");
-        }
-    },
-    async update_number() {
-        try {
-            await axios({
-                method: "POST",
-                url: "http://164.92.174.146/update_number",
-                data:  JSON.stringify({"number": this.User.number, "email": this.User.email}),
-                headers:{ 'content-type':'application/json', Authorization: this.token}
-                })
-        }
-        catch(err){
-            this.show = true
-            throw new Error ("already existing number");
-        }
-    },
-    async update_email() {
-        try {
-            await axios({
-                method: "POST",
-                url: "http://164.92.174.146/update_email",
-                data:  JSON.stringify({"newemail": this.User.email, "email": this.old_user.email}),
-                headers:{ 'content-type':'application/json', Authorization: this.token}
-            })
-        }
-        catch(err){
-            this.show = true
-            throw new Error("already existing email");
-        };
-    },
-    async update_password() {
-        try {
-            await axios({
-                method: "POST",
-                url: "http://164.92.174.146/update_password",
-                data:  JSON.stringify({"old_password": this.User.password, "email": this.User.email, 
-                "new_password": this.User.new_password}),
-                headers:{ 'content-type':'application/json', Authorization: this.token}
-                })
-        }
-        catch(err) {
-            this.show = true
-            throw new Error("Invalid password")
+            throw new Error(err.response.data);
         }
     },
     async Save() {
         this.show = false;
         try {
-            if(this.old_user.name !== this.User.name) {
-                await this.update_name()
-            }
-            if(this.old_user.number !== this.User.number) {
-                await this.update_number()
-            }
-            if(this.old_user.email !== this.User.email) {
-                await this.update_email()
-            }
-            if(this.User.new_password) {
-                await this.update_password()
-            }
+            await this.update_user()
             this.Back()
         }
         catch(err){
