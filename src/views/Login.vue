@@ -52,7 +52,7 @@
                 id: id
               },
             }).then((response) => {
-                resolve(response.data.is_owner);
+                resolve(response.data.role);
             });
         })
         
@@ -69,8 +69,8 @@
               },
             }).then(async(response) => {
                 localStorage.setItem("usertoken", response.data.idToken);
-                let is_owner = await this.check_owner(response.data.id)
-                if(is_owner === true){
+                const role = await this.check_owner(response.data.id)
+                if(role === 'owner'){
                   this.$router.push({ name: "Home" ,params: { id: response.data.id}});
                 }
                 else {
@@ -84,7 +84,7 @@
         }
    },
    created () {
-    if (localStorage.getItem("usertoken")) {
+    if (localStorage.getItem("usertoken") && this.$session.get('id')) {
       this.$router.push({ name: "Home" });
     }
    },
