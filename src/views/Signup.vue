@@ -26,7 +26,7 @@
                     placeholder="Confirm Password">
                 </div>
                 <v-alert v-if="show" dismissible dense outlined>
-                    invalid data, please check the fields again
+                    {{error}}
                 </v-alert>
                 <v-btn @click="Signup" id="submit">SIGN UP</v-btn>
             </form>
@@ -44,22 +44,32 @@
                 name: "",
                 number: "",
                 password:"",
-                is_owner: true
+                role: "owner"
             },
-            show: false,   
+            show: false,
+            error: "" 
         }
       },
       methods: {
         Signup() {
+            this.show = false
             axios({
                     method: "post",
                     url: "http://164.92.174.146/sign_up",
                     data: JSON.stringify(this.user),
                     headers:{ 'content-type':'application/json'}
                 }).then((response) => {
-                    this.$router.push({ name: "Login" });
+                    if (response.data.value != "sign up successful") {
+                        this.error = response.data.value
+                        this.show = true;
+                    }
+                    else {
+                        this.$router.push({ name: "Login" });
+                    }
+                    
                 })
                 .catch((err) => {
+                    this.error = "Error with user fields"
                     this.show = true;
                 });
         },
