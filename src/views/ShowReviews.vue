@@ -30,10 +30,6 @@
                 <h4>
                   {{Review.driverID.name}}
                 </h4>
-                <div class="country d-flex align-items-center">
-                  <div class="country-name font-accent">This review was noted at 
-                    {{Review.cameraID.address}}</div>
-                </div>
                 <div class="review-description">
                   <p>
                     {{Review.content}}

@@ -1,6 +1,6 @@
 <template>
   <v-toolbar>
-  <img class="mr-5" :src="require('@/assets/logo.png')" height="110"/>
+  <img class="mr-5" :src="require('@/assets/logo1.png')" height="80"/>
   <v-spacer></v-spacer>
   <div class="edit" v-if="show_edit">
     <v-btn @click="editProfile" icon> Edit Profile </v-btn>
