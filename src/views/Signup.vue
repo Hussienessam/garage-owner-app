@@ -1,8 +1,8 @@
 <template>
     <div id="main-container">
         <div id="container">
+            <img class="mr-6" :src="require('@/assets/logo1.png')" />
             <h1 id="title">Create your account
-                <v-col class="text-right"><v-btn @click="back" icon> Back to Login </v-btn></v-col>
                 </h1>
             <form action="">
                 <div class="input-group">
@@ -29,6 +29,7 @@
                     {{error}}
                 </v-alert>
                 <v-btn @click="Signup" id="submit">SIGN UP</v-btn>
+                <v-col ><v-btn @click="back" icon> Back to Login </v-btn></v-col>
             </form>
         </div>
     </div>

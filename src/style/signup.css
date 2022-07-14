@@ -20,9 +20,9 @@
 }
 
 #container {
-  padding: 60px;
+  padding: 40px;
   width: 600px;
-  height: 585px;
+  height: 680px;
   background-color: #FFFFFF;
   border-radius: 5px;
   box-shadow: 3px 3px 10px 3px #4d4d4d2d;
@@ -32,7 +32,7 @@
 #title {
   font-size: 24px;
   color: #222d32;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   font-family: emoji;
   display: flex;
 }
@@ -98,4 +98,9 @@ input[type=checkbox] {
   cursor: pointer;
   margin-top: 1rem;
   border-radius: 12px;
+}
+
+img{
+  height: 120px;
+  justify-content: left;
 }

@@ -2,6 +2,7 @@
     <div class="body">
         <div id="main-container">
         <div id="container">
+          <img class="mr-6" :src="require('@/assets/logo1.png')" />
             <h1 id="title">LOGIN <span>
                 <img src="logo.png" alt="">
             </span></h1>
