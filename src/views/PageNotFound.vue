@@ -1,7 +1,7 @@
 <template>
     <div id="main">
     	<div class="text">
-        	<h1>Error 404</h1>
+        	<h1>404 Not Found</h1>
     	</div>
     </div>
     
